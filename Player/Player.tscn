@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://clddbg7onlucs"]
+
+[ext_resource type="Script" path="res://Components/StatesMachine.gd" id="1_jk4el"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_ujjoo"]
+[ext_resource type="Script" path="res://Components/PlayerControl3D.gd" id="2_1vti0"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xqvnx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mo0g0"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.962402, 0)
+script = ExtResource("1_ujjoo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_xqvnx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_mo0g0")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_states")]
+script = ExtResource("1_jk4el")
+initial_states = [NodePath("PlayerControl")]
+
+[node name="PlayerControl" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("2_1vti0")
+player = NodePath("../..")
+isometric_movement = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.833886, 0.551937, 0, -0.551937, 0.833886, 0, 13.2, 20)
+projection = 1
+size = 6.94

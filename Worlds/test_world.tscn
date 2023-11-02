@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtj0f5j0opw0m"]
+
+[ext_resource type="PackedScene" uid="uid://clddbg7onlucs" path="res://Player/Player.tscn" id="1_yq1qk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hju6a"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_k7lg5"]
+sky_material = SubResource("ProceduralSkyMaterial_hju6a")
+
+[sub_resource type="Environment" id="Environment_ukb6v"]
+background_mode = 2
+sky = SubResource("Sky_k7lg5")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uq1el"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i40k0"]
+
+[node name="Test Scene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ukb6v")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Obstacles" type="Node3D" parent="."]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Obstacles"]
+transform = Transform3D(22.3191, 0, 0, 0, 1.38921, 0, 0, 0, 27.3237, -1.65853, 0.0525036, 4.75742)
+use_collision = true
+mesh = SubResource("PlaneMesh_uq1el")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="Obstacles"]
+transform = Transform3D(5.54542, 0.35777, -1.68175, -0.551596, 3.91776, -0.0206987, 1.55407, 0.113915, 5.99369, -8.32612, 1.16978, -11.3288)
+use_collision = true
+mesh = SubResource("BoxMesh_i40k0")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="Obstacles"]
+transform = Transform3D(5.54542, 0.35777, -1.68175, -0.551596, 3.91776, -0.0206987, 1.55407, 0.113915, 5.99369, -7.40228, -0.910631, -8.67899)
+use_collision = true
+mesh = SubResource("BoxMesh_i40k0")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="Obstacles"]
+transform = Transform3D(-2.20695, 0, -1.06056, 0, 1.5157, 0, 1.21775, 0, -1.92207, 6.30988, 0.732673, 8.81736)
+use_collision = true
+mesh = SubResource("BoxMesh_i40k0")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="Obstacles"]
+transform = Transform3D(-10.0438, 0.834378, -2.91347, 7.2985, 1.3971, 0.838625, 7.14407, -0.25426, -4.95277, -7.11887, 2.38894, 8.94465)
+use_collision = true
+mesh = SubResource("BoxMesh_i40k0")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="Obstacles"]
+transform = Transform3D(-2.20695, 0, -1.06056, 0, 1.5157, 0, 1.21775, 0, -1.92207, 5.43223, -0.165232, 8.31421)
+use_collision = true
+mesh = SubResource("BoxMesh_i40k0")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="Obstacles"]
+transform = Transform3D(3.00201, 0, 0, 0, 10.5736, 0, 0, 0, 2.1161, 9.11646, 3.32253, -9.22338)
+use_collision = true
+mesh = SubResource("BoxMesh_i40k0")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="Obstacles"]
+transform = Transform3D(3.00201, 0, 0, 0, 6.23119, 0, 0, 0, 2.1161, 8.55178, 2.52474, -8.44813)
+use_collision = true
+mesh = SubResource("BoxMesh_i40k0")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_yq1qk")]
+
+[node name="Camera3D" parent="CharacterBody3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.848048, 0.529919, 0, -0.529919, 0.848048, 0, 13, 20)
+projection = 0
+fov = 24.0
+size = 12.235
+
+[editable path="CharacterBody3D"]
