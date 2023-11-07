@@ -5,11 +5,11 @@ class_name SnakeJumpComponent
 @export_range(1,10, 0.1) var strength: float
 
 
-func _process(delta):
+func _physics_process(delta):
 	if not player.is_on_floor():
-		player.velocity.y += 10
+		player.velocity.y += 30
 	else:
-		player.velocity.x = lerp(player.velocity.x, 0.0, 0.1)
+		player.velocity.x = lerp(player.velocity.x, 0.0, 0.3)
 	
 	if Input.is_action_just_pressed("l_click") and player.is_on_floor():
 		var direction = player.global_position.direction_to(player.get_global_mouse_position())
@@ -18,6 +18,6 @@ func _process(delta):
 		
 		player.velocity = direction * strength * 60
 	elif Input.is_action_just_released("l_click") and not player.is_on_floor() and player.velocity.y < 0:
-		player.velocity = lerp(player.velocity, Vector2.ZERO, 100 * delta)
+		player.velocity = lerp(player.velocity, Vector2.ZERO, 0.5)
 		
 	player.move_and_slide()

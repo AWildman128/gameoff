@@ -28,7 +28,7 @@ func _ready():
 		points.push_front(player.global_position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	#if player.global_position != points[0]:
 	points.push_front(player.global_position)
 	#print(points[0])
