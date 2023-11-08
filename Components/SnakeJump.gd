@@ -18,6 +18,7 @@ func _physics_process(delta):
 		
 		player.velocity = direction * strength * 60
 	elif Input.is_action_just_released("l_click") and not player.is_on_floor() and player.velocity.y < 0:
-		player.velocity = lerp(player.velocity, Vector2.ZERO, 0.5)
+		player.velocity.y = lerp(player.velocity.y, 0.0, 0.5)
+		#player.velocity.x = lerp(player.velocity.y, 0.0, 0.5)
 		
 	player.move_and_slide()
