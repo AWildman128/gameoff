@@ -10,6 +10,7 @@ point_count = 4
 
 [sub_resource type="Curve" id="Curve_l460v"]
 min_value = -1.0
+bake_resolution = 10
 _data = [Vector2(0, 0.0105263), 0.0, 0.0, 0, 0, Vector2(0.262887, 0.326316), 0.0, 0.0, 0, 0, Vector2(0.510309, -0.284211), 0.0, 0.0, 0, 0, Vector2(1, 0.0315789), 0.0, 0.0, 0, 0]
 point_count = 4
 
