@@ -16,12 +16,14 @@ func _ready():
 
 
 func _physics_process(delta):
-	if not player.is_on_floor():
-		player.velocity.y += 30  # Gravity
+	if not player.is_on_floor_only():
+		player.velocity.y += 15  # Gravity
+	elif player.is_on_wall_only():
+		player.velocity.y += 0.1 #Slowly slide down wall (does not work?)
 	else:
 		player.velocity.x = lerp(player.velocity.x, 0.0, 0.3)  # Floor friction
 	
-	if Input.is_action_just_pressed("l_click") and (player.is_on_floor() or grabbing):
+	if Input.is_action_just_pressed("l_click") and (player.is_on_floor() or grabbing or player.is_on_wall()):
 		var direction = player.global_position.direction_to(player.get_global_mouse_position())
 		var distance = player.global_position.distance_to(player.get_global_mouse_position())
 		distance = clamp(distance, 10, 60)
