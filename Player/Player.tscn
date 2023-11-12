@@ -15,11 +15,13 @@ _data = [Vector2(0, 0.0105263), 0.0, 0.0, 0, 0, Vector2(0.262887, 0.326316), 0.0
 point_count = 4
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cp7ph"]
-radius = 4.12311
+radius = 2.0
 
 [node name="Snake" type="CharacterBody2D"]
+collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_vu111")
 
 [node name="SnakeComponent" type="Node" parent="." node_paths=PackedStringArray("player")]
@@ -32,13 +34,21 @@ taper = SubResource("Curve_bxp8h")
 curve = SubResource("Curve_l460v")
 magnitude = 10.0
 
-[node name="SnakeJumpComponent" type="Node" parent="." node_paths=PackedStringArray("player")]
+[node name="SnakeJumpComponent" type="Node" parent="." node_paths=PackedStringArray("player", "area")]
 script = ExtResource("3_dylfg")
 player = NodePath("..")
-strength = 7.0
+area = NodePath("../Area2D")
+strength = 4.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cp7ph")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_cp7ph")

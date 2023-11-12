@@ -32,6 +32,9 @@ tracks/0/keys = {
 "values": [1, 2, 3, 4, 5, 1]
 }
 
+[sub_resource type="Animation" id="Animation_1gy2v"]
+resource_name = "Grabbed"
+
 [sub_resource type="Animation" id="Animation_ahwut"]
 length = 0.001
 tracks/0/type = "value"
@@ -46,9 +49,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
-
-[sub_resource type="Animation" id="Animation_1gy2v"]
-resource_name = "Grabbed"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_60oot"]
 _data = {
@@ -68,14 +68,14 @@ hframes = 6
 [node name="Head" type="Node2D" parent="Sprite2D"]
 position = Vector2(1, -4)
 
-[node name="Area2D" type="Area2D" parent="Sprite2D/Head" node_paths=PackedStringArray("health_component", "animation_player")]
+[node name="HurtboxComponent" type="Area2D" parent="Sprite2D/Head" node_paths=PackedStringArray("health_component", "animation_player")]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("2_7i27a")
 health_component = NodePath("../../../HealthComponent")
 animation_player = NodePath("../../../AnimationPlayer")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Head/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Head/HurtboxComponent"]
 shape = SubResource("CircleShape2D_5t02u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -106,7 +106,7 @@ animation_player = NodePath("../../AnimationPlayer")
 
 [node name="GrabbedChecker" type="Node" parent="StateMachine/EnemyMelee" node_paths=PackedStringArray("area")]
 script = ExtResource("5_ki1i5")
-area = NodePath("../../../Sprite2D/Head/Area2D")
+area = NodePath("../../../Sprite2D/Head/HurtboxComponent")
 
 [node name="GrabbedState" type="Node" parent="StateMachine" node_paths=PackedStringArray("entity", "sprite", "animation_player")]
 script = ExtResource("5_1rpbw")
