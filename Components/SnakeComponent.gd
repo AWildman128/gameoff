@@ -6,10 +6,10 @@ class_name SnakeComponent
 @export var player: CharacterBody2D
 @export var texture: Texture
 @export var segments: int
-@export_range(0, 1, 0.1) var spacing: float
+@export_range(0, 10, 0.1) var spacing: float
 @export var taper: Curve  # Scales the body along the curve
 @export var curve: Curve  # Skews the body along the curve
-@export var magnitude: float  # How much the curve influences the skew
+@export var magnitude: float  # How much the curve gitinfluences the skew
 
 var bodies: Array[Sprite2D]		# Stores individual segment objects
 var points: Array[Vector2]		# Saves previous positions
@@ -23,6 +23,7 @@ func _ready():
 	line.joint_mode = Line2D.LINE_JOINT_ROUND
 	line.begin_cap_mode = Line2D.LINE_CAP_ROUND
 	line.end_cap_mode = Line2D.LINE_CAP_ROUND
+	line.width = 5
 	self.add_child(line)
 	
 	# Adds segment objects

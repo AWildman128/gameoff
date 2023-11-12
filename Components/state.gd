@@ -1,7 +1,10 @@
 extends Node
 class_name State
 
+var pause_update = false
+
 signal transition
+signal play_animation(animation)
 
 func enter():
 	pass
@@ -10,6 +13,7 @@ func enter_children():
 	for substate in self.get_children():
 		substate.enter()
 		substate.enter_children()
+		print(substate.name)
 
 func update(delta):
 	pass

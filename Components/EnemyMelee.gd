@@ -11,7 +11,9 @@ var player: Node2D
 
 func enter():
 	player = get_tree().get_first_node_in_group("Player")
-
+	
+	if not animation_player: animation_player = AnimationPlayer.new()
+	animation_player.animation_finished.connect(on_animation_finished)
 
 func update(delta):
 	var direction = player.global_position - enemy.global_position
@@ -20,11 +22,14 @@ func update(delta):
 		enemy.velocity.x = round(direction.normalized().x) * move_speed
 	else:
 		enemy.velocity.x = 0
-		if animation_player:
-			animation_player.play("Attack")
+		animation_player.play("Attack")
 
 	if direction.length() > detection_distance:
 		transition.emit(self, wander.name)
 	
 	enemy.move_and_slide()
 
+
+func on_animation_finished(anim):
+	if anim == "Attack":
+		animation_player.play("RESET")

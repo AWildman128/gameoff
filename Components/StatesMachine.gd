@@ -19,6 +19,7 @@ func _ready():
 	if current_states:
 		for state in current_states:
 			state.enter()
+			state.enter_children()
 
 
 func _process(delta):
@@ -41,6 +42,7 @@ func on_child_transitioned(state: State, new_state_name: String, replace: bool =
 		return
 	elif state in current_states and replace:
 		state.exit()
+		state.exit_children()
 		print(state.name + " exited")
 		current_states.erase(state)
 	
@@ -50,4 +52,5 @@ func on_child_transitioned(state: State, new_state_name: String, replace: bool =
 	
 	print(new_state.name + " entered")
 	new_state.enter()
+	new_state.enter_children()
 	current_states.append(new_state)

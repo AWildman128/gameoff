@@ -5,35 +5,38 @@
 [ext_resource type="Script" path="res://Components/SnakeJump.gd" id="3_dylfg"]
 
 [sub_resource type="Curve" id="Curve_bxp8h"]
-_data = [Vector2(0, 0.968421), 0.0, 0.0, 0, 0, Vector2(0.180412, 0.68421), 0.0, 0.0, 0, 0, Vector2(0.463917, 0.621053), 0.0, 0.0, 0, 0, Vector2(1, 0.273684), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(0, 0.915789), 0.0, 0.0, 0, 0, Vector2(0.252577, 0.652632), 0.0, 0.0, 0, 0, Vector2(1, 0.294737), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Curve" id="Curve_l460v"]
 min_value = -1.0
-_data = [Vector2(0, 0.0105263), 0.0, 0.0, 0, 0, Vector2(0.262887, 0.326316), 0.0, 0.0, 0, 0, Vector2(0.510309, -0.284211), 0.0, 0.0, 0, 0, Vector2(1, 0.0315789), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.0105263), 0.0, 0.0, 0, 0, Vector2(0.226804, 0.347368), 0.0, 0.0, 0, 0, Vector2(0.407216, -0.284211), 0.0, 0.0, 0, 0, Vector2(1, 0.0315789), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cp7ph"]
-radius = 4.12311
+radius = 2.0
 
-[node name="Snake" type="CharacterBody2D"]
+[node name="Snake" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_vu111")
 
 [node name="SnakeComponent" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("2_5rf68")
 player = NodePath("..")
 texture = ExtResource("1_vu111")
-segments = 30
-spacing = 0.6
+segments = 10
+spacing = 2.0
 taper = SubResource("Curve_bxp8h")
 curve = SubResource("Curve_l460v")
 magnitude = 10.0
 
-[node name="SnakeJumpComponent" type="Node" parent="." node_paths=PackedStringArray("player")]
+[node name="SnakeJumpComponent" type="Node" parent="." node_paths=PackedStringArray("player", "area")]
 script = ExtResource("3_dylfg")
 player = NodePath("..")
+area = NodePath("../Area2D")
 strength = 7.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -41,3 +44,10 @@ shape = SubResource("CircleShape2D_cp7ph")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
+
+[node name="Area2D" type="Area2D" parent="." groups=["Player"]]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_cp7ph")
