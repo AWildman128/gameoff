@@ -17,7 +17,7 @@ point_count = 4
 [sub_resource type="CircleShape2D" id="CircleShape2D_cp7ph"]
 radius = 2.0
 
-[node name="Snake" type="CharacterBody2D"]
+[node name="Snake" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -38,13 +38,15 @@ magnitude = 10.0
 script = ExtResource("3_dylfg")
 player = NodePath("..")
 area = NodePath("../Area2D")
-strength = 4.5
+strength = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cp7ph")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
 position_smoothing_enabled = true
+position_smoothing_speed = 8.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2

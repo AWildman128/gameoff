@@ -9,11 +9,13 @@ class_name EnemyMelee
 
 var player: Node2D
 
+
 func enter():
 	player = get_tree().get_first_node_in_group("Player")
 	
 	if not animation_player: animation_player = AnimationPlayer.new()
 	animation_player.animation_finished.connect(on_animation_finished)
+
 
 func update(delta):
 	var direction = player.global_position - enemy.global_position
@@ -32,4 +34,4 @@ func update(delta):
 
 func on_animation_finished(anim):
 	if anim == "Attack":
-		animation_player.play("RESET")
+		animation_player.stop()

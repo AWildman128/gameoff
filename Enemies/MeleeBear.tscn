@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://ddtfx4j3okrh8"]
+[gd_scene load_steps=16 format=3 uid="uid://ddtfx4j3okrh8"]
 
 [ext_resource type="Texture2D" uid="uid://cd0vvr56n82b2" path="res://Assets/Enemies/melee_bear.png" id="1_ydphg"]
 [ext_resource type="Script" path="res://Components/StatesMachine.gd" id="2_03bom"]
 [ext_resource type="Script" path="res://Components/hurt_box.gd" id="2_7i27a"]
 [ext_resource type="Script" path="res://Components/EnemyMelee.gd" id="3_1mr6t"]
 [ext_resource type="Script" path="res://Components/health_component.gd" id="3_dlrl0"]
+[ext_resource type="Script" path="res://Components/GravityComponent.gd" id="4_crm08"]
 [ext_resource type="Script" path="res://Components/Wander.gd" id="4_tf3h4"]
 [ext_resource type="Script" path="res://Components/GrabbedState.gd" id="5_1rpbw"]
 [ext_resource type="Script" path="res://Components/GrabbedChecker.gd" id="5_ki1i5"]
@@ -86,6 +87,10 @@ shape = SubResource("CapsuleShape2D_6xyvn")
 script = ExtResource("3_dlrl0")
 entity = NodePath("..")
 
+[node name="GravityComponent" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("4_crm08")
+entity = NodePath("..")
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_states")]
 script = ExtResource("2_03bom")
 initial_states = [NodePath("EnemyWander")]
@@ -93,6 +98,7 @@ initial_states = [NodePath("EnemyWander")]
 [node name="EnemyWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "attack_state", "animation_player")]
 script = ExtResource("4_tf3h4")
 enemy = NodePath("../..")
+detection_distance = 100
 attack_state = NodePath("../EnemyMelee")
 animation_player = NodePath("../../AnimationPlayer")
 
@@ -101,7 +107,7 @@ script = ExtResource("3_1mr6t")
 enemy = NodePath("../..")
 move_speed = 25
 wander = NodePath("../EnemyWander")
-detection_distance = 100
+detection_distance = 150
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="GrabbedChecker" type="Node" parent="StateMachine/EnemyMelee" node_paths=PackedStringArray("area")]

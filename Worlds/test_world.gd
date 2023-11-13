@@ -8,5 +8,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if $Snake.global_position.y >= 100:
-		$Snake.global_position = Vector2.ZERO
+#	if $Snake.global_position.y >= 100:
+#		$Snake.global_position = Vector2.ZERO
+	pass
