@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ddtfx4j3okrh8"]
+[gd_scene load_steps=17 format=3 uid="uid://ddtfx4j3okrh8"]
 
 [ext_resource type="Texture2D" uid="uid://cd0vvr56n82b2" path="res://Assets/Enemies/melee_bear.png" id="1_ydphg"]
 [ext_resource type="Script" path="res://Components/StatesMachine.gd" id="2_03bom"]
@@ -17,6 +17,9 @@ radius = 6.0
 radius = 6.0
 height = 16.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmq0c"]
+size = Vector2(14, 13)
+
 [sub_resource type="Animation" id="Animation_76kjs"]
 resource_name = "Attack"
 length = 2.0
@@ -32,9 +35,33 @@ tracks/0/keys = {
 "update": 1,
 "values": [1, 2, 3, 4, 5, 1]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
 
 [sub_resource type="Animation" id="Animation_1gy2v"]
 resource_name = "Grabbed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ahwut"]
 length = 0.001
@@ -49,6 +76,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_60oot"]
@@ -69,7 +108,7 @@ hframes = 6
 [node name="Head" type="Node2D" parent="Sprite2D"]
 position = Vector2(1, -4)
 
-[node name="HurtboxComponent" type="Area2D" parent="Sprite2D/Head" node_paths=PackedStringArray("health_component", "animation_player")]
+[node name="HurtboxComponent" type="Area2D" parent="Sprite2D/Head" node_paths=PackedStringArray("health_component", "animation_player") groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("2_7i27a")
@@ -82,6 +121,15 @@ shape = SubResource("CircleShape2D_5t02u")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_6xyvn")
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(7, 0)
+shape = SubResource("RectangleShape2D_bmq0c")
+disabled = true
 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("entity")]
 script = ExtResource("3_dlrl0")
@@ -102,13 +150,14 @@ detection_distance = 100
 attack_state = NodePath("../EnemyMelee")
 animation_player = NodePath("../../AnimationPlayer")
 
-[node name="EnemyMelee" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "wander", "animation_player")]
+[node name="EnemyMelee" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "wander", "animation_player", "attack_area")]
 script = ExtResource("3_1mr6t")
 enemy = NodePath("../..")
 move_speed = 25
 wander = NodePath("../EnemyWander")
 detection_distance = 150
 animation_player = NodePath("../../AnimationPlayer")
+attack_area = NodePath("../../AttackArea")
 
 [node name="GrabbedChecker" type="Node" parent="StateMachine/EnemyMelee" node_paths=PackedStringArray("area")]
 script = ExtResource("5_ki1i5")

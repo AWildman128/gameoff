@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://clddbg7onlucs"]
+[gd_scene load_steps=11 format=3 uid="uid://clddbg7onlucs"]
 
 [ext_resource type="Texture2D" uid="uid://4syvdymc4y81" path="res://Assets/white_circle.png" id="1_vu111"]
 [ext_resource type="Script" path="res://Components/SnakeComponent.gd" id="2_5rf68"]
 [ext_resource type="Script" path="res://Components/SnakeJump.gd" id="3_dylfg"]
+[ext_resource type="Script" path="res://Components/hurt_box.gd" id="4_cnkcu"]
+[ext_resource type="Script" path="res://Components/health_component.gd" id="5_xepyk"]
 
 [sub_resource type="Curve" id="Curve_bxp8h"]
 _data = [Vector2(0, 0.968421), 0.0, 0.0, 0, 0, Vector2(0.180412, 0.68421), 0.0, 0.0, 0, 0, Vector2(0.463917, 0.621053), 0.0, 0.0, 0, 0, Vector2(1, 0.273684), 0.0, 0.0, 0, 0]
@@ -14,8 +16,14 @@ bake_resolution = 10
 _data = [Vector2(0, 0.0105263), 0.0, 0.0, 0, 0, Vector2(0.262887, 0.326316), 0.0, 0.0, 0, 0, Vector2(0.510309, -0.284211), 0.0, 0.0, 0, 0, Vector2(1, 0.0315789), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cp7ph"]
-radius = 2.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dffg6"]
+size = Vector2(4, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ooaxb"]
+size = Vector2(4, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0vmq"]
+size = Vector2(4, 4)
 
 [node name="Snake" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
@@ -34,23 +42,38 @@ taper = SubResource("Curve_bxp8h")
 curve = SubResource("Curve_l460v")
 magnitude = 10.0
 
-[node name="SnakeJumpComponent" type="Node" parent="." node_paths=PackedStringArray("player", "area")]
-script = ExtResource("3_dylfg")
-player = NodePath("..")
-area = NodePath("../Area2D")
-strength = 5.0
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_cp7ph")
+shape = SubResource("RectangleShape2D_dffg6")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="GrabArea" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 4
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_cp7ph")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GrabArea"]
+shape = SubResource("RectangleShape2D_ooaxb")
+
+[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component") groups=["Player"]]
+collision_layer = 2
+collision_mask = 4
+monitoring = false
+monitorable = false
+script = ExtResource("4_cnkcu")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("RectangleShape2D_d0vmq")
+
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("5_xepyk")
+entity = NodePath("..")
+
+[node name="SnakeJumpComponent" type="Node" parent="." node_paths=PackedStringArray("player", "area")]
+script = ExtResource("3_dylfg")
+player = NodePath("..")
+area = NodePath("../GrabArea")
+strength = 6.0

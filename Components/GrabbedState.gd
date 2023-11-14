@@ -9,9 +9,10 @@ class_name GrabbedState
 func enter():
 	var tween = self.create_tween()
 	tween.set_loops()
-	tween.tween_property(sprite, "position", Vector2(-2,0), 1).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(sprite, "position", Vector2(2,0), 1).set_trans(Tween.TRANS_SINE)
-	animation_player.play("RESET")
+	tween.tween_property(sprite, "position", Vector2(-2,0), 0.5).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(sprite, "position", Vector2(2,0), 0.5).set_trans(Tween.TRANS_SINE)
+	animation_player.stop()
+	animation_player.play('Grabbed')
 
 
 func physics_update(delta):
