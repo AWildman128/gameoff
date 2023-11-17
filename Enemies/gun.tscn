@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://8bfvo250dwwt"]
+
+[ext_resource type="Script" path="res://Enemies/gun.gd" id="1_t1v7x"]
+[ext_resource type="Texture2D" uid="uid://v0gk0y78jac1" path="res://icon.svg" id="2_a4i1r"]
+[ext_resource type="Texture2D" uid="uid://cn34v4xh7onaj" path="res://Assets/Enemies/rifle.png" id="3_ivr4e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o5uix"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_t1v7x")
+metadata/_edit_group_ = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(150, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Line2D" type="Line2D" parent="RayCast2D"]
+points = PackedVector2Array(0, 0, 150, 0)
+width = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_a4i1r")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 2)
+texture = ExtResource("3_ivr4e")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Weapon"]]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_o5uix")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

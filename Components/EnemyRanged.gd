@@ -1,7 +1,7 @@
 extends State
 class_name EnemyRanged
 
-@onready var enemy: CharacterBody2D
+@export var enemy: CharacterBody2D
 @export var wander: State
 @export var weapon: Node2D
 @export var detection_distance = 50
@@ -27,10 +27,11 @@ func shoot():
 		return
 	
 	if weapon:
-		weapon.shoot(direction)
+		weapon.shoot(player)
 		shooting = true
 
 
 func finished_shooting():
+	print('finished shooting')
 	shooting = false
 	shoot()

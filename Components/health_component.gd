@@ -7,10 +7,20 @@ class_name HealthComponent
 func set_health(amount):
 	health += amount
 	print(health)
+	
 	if entity:
 		if health <= 0:
-			entity.queue_free()
+			print('killed')
+			
+			if not entity.is_in_group("Player"):
+				entity.queue_free()
 
 
 func get_health():
 	return health
+
+func is_alive():
+	if health <= 0:
+		return false
+	else:
+		return true

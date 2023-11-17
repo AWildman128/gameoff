@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://ces8lc5s2ityk"]
+
+[ext_resource type="Texture2D" uid="uid://cd0vvr56n82b2" path="res://Assets/Enemies/melee_bear.png" id="1_cfv5j"]
+[ext_resource type="Script" path="res://Components/hurt_box.gd" id="2_oxq7h"]
+[ext_resource type="Script" path="res://Components/health_component.gd" id="3_wd6kq"]
+[ext_resource type="Script" path="res://Components/GravityComponent.gd" id="4_vugu6"]
+[ext_resource type="Script" path="res://Components/StatesMachine.gd" id="5_reu1e"]
+[ext_resource type="Script" path="res://Components/EnemyRanged.gd" id="6_cgcie"]
+[ext_resource type="Script" path="res://Components/Wander.gd" id="7_peonx"]
+[ext_resource type="PackedScene" uid="uid://8bfvo250dwwt" path="res://Enemies/gun.tscn" id="8_2vkwo"]
+[ext_resource type="Resource" uid="uid://ccyqvuqo5fllx" path="res://Resources/Rifle.tres" id="9_1a13m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wjeo0"]
+radius = 6.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uhqce"]
+radius = 6.0
+height = 16.0
+
+[node name="RangedEnemy" type="CharacterBody2D"]
+collision_layer = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cfv5j")
+hframes = 6
+
+[node name="Head" type="Node2D" parent="Sprite2D"]
+position = Vector2(1, -4)
+
+[node name="HurtboxComponent" type="Area2D" parent="Sprite2D/Head" node_paths=PackedStringArray("entity", "health_component") groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_oxq7h")
+entity = NodePath("../../..")
+health_component = NodePath("../../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Head/HurtboxComponent"]
+shape = SubResource("CircleShape2D_wjeo0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CapsuleShape2D_uhqce")
+
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("3_wd6kq")
+entity = NodePath("..")
+
+[node name="GravityComponent" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("4_vugu6")
+entity = NodePath("..")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_states")]
+script = ExtResource("5_reu1e")
+initial_states = [NodePath("EnemyWander")]
+
+[node name="EnemyRanged" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "wander", "weapon")]
+script = ExtResource("6_cgcie")
+enemy = NodePath("../..")
+wander = NodePath("../EnemyWander")
+weapon = NodePath("../../Gun")
+detection_distance = 150
+
+[node name="EnemyWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "attack_state")]
+script = ExtResource("7_peonx")
+enemy = NodePath("../..")
+detection_distance = 100
+attack_state = NodePath("../EnemyRanged")
+
+[node name="Gun" parent="." node_paths=PackedStringArray("hurt_box") instance=ExtResource("8_2vkwo")]
+data = ExtResource("9_1a13m")
+hurt_box = NodePath("../Sprite2D/Head/HurtboxComponent")

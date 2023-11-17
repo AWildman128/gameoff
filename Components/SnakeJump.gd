@@ -4,6 +4,8 @@ class_name SnakeJumpComponent
 @export var player: CharacterBody2D
 @export var area: Area2D
 @export_range(1,10, 0.1) var strength: float  # Jump strength
+@export var health_component: HealthComponent
+@onready var weapon = $"../Weapon"
 
 var grabbing = false
 var grab_target: HurtboxComponent
@@ -24,6 +26,9 @@ func _physics_process(delta):
 		player.velocity.x = -player.get_wall_normal().x
 	else:
 		player.velocity.x = lerp(player.velocity.x, 0.0, 0.1)  # Floor friction
+	0.01
+	
+	if not health_component.is_alive(): return
 	
 	if Input.is_action_just_pressed("l_click") and (player.is_on_floor() or grabbing or (player.is_on_wall() and wall_jumps > 0)):
 		var direction = player.global_position.direction_to(player.get_global_mouse_position())
@@ -37,7 +42,7 @@ func _physics_process(delta):
 		elif player.is_on_wall_only():
 			var dir = player.get_wall_normal().normalized()
 			if direction.y > 0:
-				dir.y = -1
+				dir.y = 0
 			elif direction.y < 0:
 				dir.y = 1
 			#print(dir)
@@ -50,7 +55,7 @@ func _physics_process(delta):
 			
 	elif Input.is_action_just_released("l_click") and not player.is_on_floor() and player.velocity.y < 0:
 		var tween = get_tree().create_tween()
-		tween.tween_property(player, "velocity", Vector2(player.velocity.x, 0.0), 0.05).set_ease(Tween.EASE_IN)
+		tween.tween_property(player, "velocity", Vector2(player.velocity.x, 0.0), 0.02).set_ease(Tween.EASE_IN)
 		#tween.kill()
 		#player.velocity.y = lerp(player.velocity.y, 0.0, 1)  # Controls how suddenly the snake falls after mouse is released
 		
@@ -64,6 +69,8 @@ func on_area_entered(area):
 	if area.is_in_group("Enemy"):
 		grabbing = true
 		grab_target = area
+	if area.is_in_group("Weapon"):
+		print('weapon')
 
 
 func on_area_exited(area):

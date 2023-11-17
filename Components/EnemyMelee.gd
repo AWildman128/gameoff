@@ -37,8 +37,6 @@ func physics_update(delta):
 
 	if direction.length() > detection_distance:
 		transition.emit(self, wander.name)
-	
-	enemy.move_and_slide()
 
 
 func on_animation_finished(anim):

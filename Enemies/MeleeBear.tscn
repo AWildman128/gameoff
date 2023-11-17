@@ -108,10 +108,11 @@ hframes = 6
 [node name="Head" type="Node2D" parent="Sprite2D"]
 position = Vector2(1, -4)
 
-[node name="HurtboxComponent" type="Area2D" parent="Sprite2D/Head" node_paths=PackedStringArray("health_component", "animation_player") groups=["Enemy"]]
+[node name="HurtboxComponent" type="Area2D" parent="Sprite2D/Head" node_paths=PackedStringArray("entity", "health_component", "animation_player") groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("2_7i27a")
+entity = NodePath("../../..")
 health_component = NodePath("../../../HealthComponent")
 animation_player = NodePath("../../../AnimationPlayer")
 

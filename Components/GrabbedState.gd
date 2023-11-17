@@ -15,5 +15,5 @@ func enter():
 	animation_player.play('Grabbed')
 
 
-func physics_update(delta):
-	pass
+func _physics_update(delta):
+	entity.move_and_slide()

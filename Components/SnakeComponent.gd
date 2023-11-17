@@ -11,6 +11,8 @@ class_name SnakeComponent
 @export var curve: Curve  # Skews the body along the curve
 @export var magnitude: float  # How much the curve gitinfluences the skew
 
+@onready var weapon: Node2D = $"../Weapon"
+
 var bodies: Array[Sprite2D]		# Stores individual segment objects
 var points: Array[Vector2]		# Saves previous positions
 var line = Line2D.new()
@@ -54,4 +56,6 @@ func _physics_process(delta):
 		bodies[i].global_position = points[i * (spacing*bodies[i].scale.x)]  # Sets global position, offset by spacing
 		bodies[i].position.x += curve.sample_baked(float(i)/float(segments)) * magnitude  # Skews segments along x axis
 		line.set_point_position(i,bodies[i].global_position)
+		
+	weapon.global_position = bodies[-1].global_position
 	

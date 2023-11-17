@@ -28,11 +28,20 @@ func _physics_process(delta):
 	else:
 		player.velocity.x = lerp(player.velocity.x, 0.0, 0.1)  # Floor friction
 	
-	var direction = Vector2((Input.get_action_strength("right")-Input.get_action_strength("left")) /2, (Input.get_action_strength("down") - Input.get_action_strength("up")) * sqrt(3)/2)
+	var direction = Vector2((Input.get_action_strength("right")-Input.get_action_strength("left")), (Input.get_action_strength("down") - Input.get_action_strength("up")))
+
+	player.velocity.x += direction.x * speed / 7
+	if direction == Vector2(1,0):
+		direction = Vector2(sqrt(3)/2,-0.5)
+#	if direction == Vector2(1,-1):
+#		direction = Vector2(0.5,-sqrt(3)/2)
+
+	if direction == Vector2(-1,0):
+		direction = Vector2(-sqrt(3)/2,-0.5)
+#	if direction == Vector2(-1,-1):
+#		direction = Vector2(-0.5,-sqrt(3)/2)
 	direction = direction.normalized()
-	#player.velocity.x = direction.x * speed
 	print(direction)
-	
 	if Input.is_action_just_pressed("ui_accept") and (player.is_on_floor() or grabbing or (player.is_on_wall() and wall_jumps > 0)):
 		if not player.is_on_wall_only():
 			player.velocity = direction * strength * 60  # Launches snake towards direction of cursor
@@ -43,7 +52,12 @@ func _physics_process(delta):
 			elif direction.y < 0:
 				dir.y = 1
 			#print(dir)
-			player.velocity = Vector2(0.5 * dir.x,-1*dir.y) * -strength * 200  # Launches snake towards direction of cursor
+			player.velocity = Vector2(0.5 * dir.x,-1*dir.y) * strength * 62  # Launches snake towards direction of cursor
+		
+		if grabbing and grab_target:
+			grab_target.hit(-1)
+			grabbing = false
+			grab_target = null
 	
 	player.move_and_slide()
 	
@@ -59,12 +73,3 @@ func on_area_entered(area):
 
 func on_area_exited(area):
 	pass
-
-
-
-
-
-
-
-
-

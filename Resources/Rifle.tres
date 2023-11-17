@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Gun" load_steps=3 format=3 uid="uid://ccyqvuqo5fllx"]
+
+[ext_resource type="Script" path="res://Resources/gun.gd" id="1_xi2s8"]
+[ext_resource type="Texture2D" uid="uid://cn34v4xh7onaj" path="res://Assets/Enemies/rifle.png" id="2_uhck7"]
+
+[resource]
+script = ExtResource("1_xi2s8")
+texture = ExtResource("2_uhck7")
+full_auto = true
+rpm = 480
+spread = 1.0
+ammo = 24
