@@ -11,6 +11,8 @@ var grabbing = false
 var grab_target: HurtboxComponent
 var wall_jumps = 1
 
+const WALK_SPEED = 15
+
 
 func _ready():
 	if not area: area = Area2D.new()
@@ -58,6 +60,10 @@ func _physics_process(delta):
 		tween.tween_property(player, "velocity", Vector2(player.velocity.x, 0.0), 0.02).set_ease(Tween.EASE_IN)
 		#tween.kill()
 		#player.velocity.y = lerp(player.velocity.y, 0.0, 1)  # Controls how suddenly the snake falls after mouse is released
+	elif Input.is_action_pressed("left"):
+		player.velocity.x -= WALK_SPEED
+	elif Input.is_action_pressed("right"):
+		player.velocity.x += WALK_SPEED
 		
 	player.move_and_slide()
 	
