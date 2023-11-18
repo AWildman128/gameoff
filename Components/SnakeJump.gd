@@ -12,6 +12,7 @@ var grab_target: HurtboxComponent
 var wall_jumps = 1
 
 const WALK_SPEED = 15
+const SPEED_CAP = 300
 
 
 func _ready():
@@ -64,7 +65,9 @@ func _physics_process(delta):
 		player.velocity.x -= WALK_SPEED
 	elif Input.is_action_pressed("right"):
 		player.velocity.x += WALK_SPEED
-		
+	
+	player.velocity = player.velocity.limit_length(SPEED_CAP)
+	
 	player.move_and_slide()
 	
 	if grabbing and grab_target:
