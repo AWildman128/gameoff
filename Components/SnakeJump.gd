@@ -26,11 +26,11 @@ func _physics_process(delta):
 		player.velocity.x = -player.get_wall_normal().x
 	else:
 		player.velocity.x = lerp(player.velocity.x, 0.0, 0.1)  # Floor friction
-	0.01
+
 	
 	if not health_component.is_alive(): return
 	
-	if Input.is_action_just_pressed("l_click") and (player.is_on_floor() or grabbing or (player.is_on_wall() and wall_jumps > 0)):
+	if Input.is_action_just_pressed("jump") and (player.is_on_floor() or grabbing or (player.is_on_wall() and wall_jumps > 0)):
 		var direction = player.global_position.direction_to(player.get_global_mouse_position())
 		var distance = player.global_position.distance_to(player.get_global_mouse_position())
 		distance = clamp(distance, 10, 60)
@@ -53,7 +53,7 @@ func _physics_process(delta):
 			grabbing = false
 			grab_target = null
 			
-	elif Input.is_action_just_released("l_click") and not player.is_on_floor() and player.velocity.y < 0:
+	elif Input.is_action_just_released("jump") and not player.is_on_floor() and player.velocity.y < 0:
 		var tween = get_tree().create_tween()
 		tween.tween_property(player, "velocity", Vector2(player.velocity.x, 0.0), 0.02).set_ease(Tween.EASE_IN)
 		#tween.kill()
