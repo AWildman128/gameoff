@@ -16,11 +16,11 @@ one_shot = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(150, 0)
-collision_mask = 2
+collision_mask = 3
 collide_with_areas = true
-collide_with_bodies = false
 
 [node name="Line2D" type="Line2D" parent="RayCast2D"]
+visible = false
 points = PackedVector2Array(0, 0, 150, 0)
 width = 2.0
 
@@ -34,10 +34,12 @@ texture = ExtResource("3_ivr4e")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Weapon"]]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_o5uix")
+
+[node name="RPMTimer" type="Timer" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

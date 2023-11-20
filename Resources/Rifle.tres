@@ -9,4 +9,4 @@ texture = ExtResource("2_uhck7")
 full_auto = true
 rpm = 480
 spread = 1.0
-ammo = 24
+ammo = 100

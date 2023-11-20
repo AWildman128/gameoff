@@ -13,9 +13,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_wjeo0"]
 radius = 6.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uhqce"]
-radius = 6.0
-height = 16.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8djfc"]
+size = Vector2(6, 5)
 
 [node name="RangedEnemy" type="CharacterBody2D"]
 collision_layer = 4
@@ -38,8 +37,8 @@ health_component = NodePath("../../../HealthComponent")
 shape = SubResource("CircleShape2D_wjeo0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
-shape = SubResource("CapsuleShape2D_uhqce")
+position = Vector2(-1, 5.5)
+shape = SubResource("RectangleShape2D_8djfc")
 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("entity")]
 script = ExtResource("3_wd6kq")
@@ -58,12 +57,12 @@ script = ExtResource("6_cgcie")
 enemy = NodePath("../..")
 wander = NodePath("../EnemyWander")
 weapon = NodePath("../../Gun")
-detection_distance = 150
+detection_distance = 300
 
 [node name="EnemyWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "attack_state")]
 script = ExtResource("7_peonx")
 enemy = NodePath("../..")
-detection_distance = 100
+detection_distance = 200
 attack_state = NodePath("../EnemyRanged")
 
 [node name="Gun" parent="." node_paths=PackedStringArray("hurt_box") instance=ExtResource("8_2vkwo")]

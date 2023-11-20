@@ -1,12 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://1rigjojsbbbh"]
+[gd_scene load_steps=4 format=3 uid="uid://1rigjojsbbbh"]
 
-[ext_resource type="Script" path="res://Node2D.gd" id="1_g6wt0"]
-[ext_resource type="Texture2D" uid="uid://v0gk0y78jac1" path="res://icon.svg" id="2_2ut3k"]
+[ext_resource type="PackedScene" uid="uid://clddbg7onlucs" path="res://Player/Player.tscn" id="1_0uihp"]
+[ext_resource type="TileSet" uid="uid://dk01xxg1m6gp7" path="res://LevelEditor/level_editor.tres" id="2_0oh75"]
+[ext_resource type="Script" path="res://LevelEditor/LevelEditor.gd" id="3_tv1vm"]
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_g6wt0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(136, 27)
-scale = Vector2(0.21875, 0.21875)
-texture = ExtResource("2_2ut3k")
+[node name="Snake" parent="." instance=ExtResource("1_0uihp")]
+
+[node name="LevelEditor" type="TileMap" parent="."]
+tile_set = ExtResource("2_0oh75")
+format = 2
+layer_0/name = "Terrain"
+layer_1/name = "Objects"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()
+script = ExtResource("3_tv1vm")

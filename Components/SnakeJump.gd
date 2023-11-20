@@ -12,7 +12,7 @@ var grab_target: HurtboxComponent
 var wall_jumps = 1
 
 const WALK_SPEED = 15
-const SPEED_CAP = 300
+const SPEED_CAP = 400
 
 
 func _ready():
@@ -22,15 +22,16 @@ func _ready():
 
 
 func _physics_process(delta):
+	#print(player.velocity)
+	
 	if not player.is_on_floor_only() and not player.is_on_wall():
 		player.velocity.y += 20  # Gravity
 	elif player.is_on_wall_only():
 		player.velocity.y = lerp(player.velocity.y, 30.0, 0.1)  # Slowly slide down wall (does work)
 		player.velocity.x = -player.get_wall_normal().x
 	else:
-		player.velocity.x = lerp(player.velocity.x, 0.0, 0.1)  # Floor friction
+		player.velocity.x = lerp(player.velocity.x, 0.0, 0.2)  # Floor friction
 
-	
 	if not health_component.is_alive(): return
 	
 	if Input.is_action_just_pressed("jump") and (player.is_on_floor() or grabbing or (player.is_on_wall() and wall_jumps > 0)):
@@ -48,8 +49,11 @@ func _physics_process(delta):
 				dir.y = 0
 			elif direction.y < 0:
 				dir.y = 1
-			#print(dir)
-			player.velocity = Vector2(0.5 * dir.x,-1*dir.y) * strength * 62  # Launches snake towards direction of cursor
+			
+			direction.y = clamp(direction.y, -0.5, 0)
+			print(direction.y)
+			
+			player.velocity = Vector2(0.5 * dir.x,direction.y*1.5) * strength * 70  # Launches snake towards direction of cursor
 		
 		if grabbing and grab_target:
 			grab_target.hit(-1)
@@ -62,16 +66,18 @@ func _physics_process(delta):
 		#tween.kill()
 		#player.velocity.y = lerp(player.velocity.y, 0.0, 1)  # Controls how suddenly the snake falls after mouse is released
 	elif Input.is_action_pressed("left"):
-		player.velocity.x -= WALK_SPEED
+		player.velocity.x = lerp(player.velocity.x, -strength * 60/2, 0.1)
 	elif Input.is_action_pressed("right"):
-		player.velocity.x += WALK_SPEED
+		player.velocity.x = lerp(player.velocity.x, strength * 60/2, 0.1)
 	
 	player.velocity = player.velocity.limit_length(SPEED_CAP)
 	
 	player.move_and_slide()
 	
 	if grabbing and grab_target:
-		player.global_position = grab_target.global_position
+		if not grab_target.is_queued_for_deletion():
+			grab_target.monitorable = false
+			player.global_position = grab_target.global_position
 
 
 func on_area_entered(area):

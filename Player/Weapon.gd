@@ -22,6 +22,14 @@ func _process(delta):
 	if not data: sprite.texture = null; return
 	
 	self.look_at(get_global_mouse_position())
+	print(self.rotation_degrees)
+	if self.rotation_degrees > 360 or self.rotation_degrees < -360:
+		self.rotation_degrees = 0
+	
+	if abs(self.rotation_degrees) > 90 and abs(self.rotation_degrees) < 270:
+		sprite.flip_v = true
+	else:
+		sprite.flip_v = false
 	
 	if data.full_auto:
 		if Input.is_action_pressed("r_click") and rpm_timer.time_left == 0:
@@ -44,8 +52,10 @@ func shoot():
 	ammo -= 1
 	if ammo <= 0: set_data()
 	
-	player.velocity = direction * 2
-
+	player.velocity = Vector2(direction.x, direction.y*2)
+	if player.is_on_wall():
+		player.velocity.x += player.get_wall_normal().x
+	
 
 func set_data(new_data = null):
 	data = new_data

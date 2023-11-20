@@ -13,9 +13,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_5t02u"]
 radius = 6.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6xyvn"]
-radius = 6.0
-height = 16.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vf7oq"]
+size = Vector2(8, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bmq0c"]
 size = Vector2(14, 13)
@@ -120,8 +119,8 @@ animation_player = NodePath("../../../AnimationPlayer")
 shape = SubResource("CircleShape2D_5t02u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
-shape = SubResource("CapsuleShape2D_6xyvn")
+position = Vector2(-1, 6)
+shape = SubResource("RectangleShape2D_vf7oq")
 
 [node name="AttackArea" type="Area2D" parent="."]
 collision_layer = 4
