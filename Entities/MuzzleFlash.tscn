@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://74lemw838qwm"]
+
+[ext_resource type="Texture2D" uid="uid://4syvdymc4y81" path="res://Assets/white_circle.png" id="1_pwlc4"]
+[ext_resource type="Script" path="res://Player/MuzzleFlash.gd" id="2_v1srf"]
+
+[sub_resource type="Gradient" id="Gradient_cd1pp"]
+offsets = PackedFloat32Array(0, 0.414815, 0.422222)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a8hmv"]
+gradient = SubResource("Gradient_cd1pp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rumok"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 62.2
+initial_velocity_max = 62.2
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.2
+scale_max = 0.5
+color_ramp = SubResource("GradientTexture1D_a8hmv")
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+process_material = SubResource("ParticleProcessMaterial_rumok")
+texture = ExtResource("1_pwlc4")
+lifetime = 0.5
+explosiveness = 0.9
+script = ExtResource("2_v1srf")

@@ -5,6 +5,8 @@
 [resource]
 script = ExtResource("1_1ud03")
 full_auto = false
+bullets = 0
 rpm = 0
 spread = 0.0
+recoil = 0.0
 ammo = 0

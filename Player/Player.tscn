@@ -83,7 +83,12 @@ health_component = NodePath("../HealthComponent")
 script = ExtResource("6_fyk1l")
 
 [node name="Sprite2D" type="Sprite2D" parent="Weapon"]
+z_index = 1
 
 [node name="RPMTimer" type="Timer" parent="Weapon"]
+process_callback = 0
 wait_time = 0.128
 one_shot = true
+
+[node name="Muzzle" type="Node2D" parent="Weapon"]
+position = Vector2(8, 0)

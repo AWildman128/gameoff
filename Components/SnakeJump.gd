@@ -51,7 +51,6 @@ func _physics_process(delta):
 				dir.y = 1
 			
 			direction.y = clamp(direction.y, -0.5, 0)
-			print(direction.y)
 			
 			player.velocity = Vector2(0.5 * dir.x,direction.y*1.5) * strength * 70  # Launches snake towards direction of cursor
 		
@@ -66,9 +65,9 @@ func _physics_process(delta):
 		#tween.kill()
 		#player.velocity.y = lerp(player.velocity.y, 0.0, 1)  # Controls how suddenly the snake falls after mouse is released
 	elif Input.is_action_pressed("left"):
-		player.velocity.x = lerp(player.velocity.x, -strength * 60/2, 0.1)
+		player.velocity.x = lerp(player.velocity.x, -strength * 60/2, 0.2)
 	elif Input.is_action_pressed("right"):
-		player.velocity.x = lerp(player.velocity.x, strength * 60/2, 0.1)
+		player.velocity.x = lerp(player.velocity.x, strength * 60/2, 0.2)
 	
 	player.velocity = player.velocity.limit_length(SPEED_CAP)
 	

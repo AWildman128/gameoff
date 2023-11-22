@@ -16,6 +16,7 @@ class_name SnakeComponent
 var bodies: Array[Sprite2D]		# Stores individual segment objects
 var points: Array[Vector2]		# Saves previous positions
 var line = Line2D.new()
+var outline = Line2D.new()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,6 +27,15 @@ func _ready():
 	line.begin_cap_mode = Line2D.LINE_CAP_ROUND
 	line.end_cap_mode = Line2D.LINE_CAP_ROUND
 	line.width = 5
+	
+	outline.width_curve = taper
+	outline.joint_mode = Line2D.LINE_JOINT_ROUND
+	outline.begin_cap_mode = Line2D.LINE_CAP_ROUND
+	outline.end_cap_mode = Line2D.LINE_CAP_ROUND
+	outline.width = 8
+	outline.default_color = Color("#000000")
+	
+	self.add_child(outline)
 	self.add_child(line)
 	
 	# Adds segment objects
@@ -37,6 +47,7 @@ func _ready():
 		new_segment.scale *= taper.sample(float(i)/float(segments))
 		self.add_child(new_segment)
 		line.add_point(Vector2.ZERO)
+		outline.add_point(Vector2.ZERO)
 	
 	# Fills the points array
 	for i in range(segments * spacing):
@@ -56,6 +67,8 @@ func _physics_process(delta):
 		bodies[i].global_position = points[i * (spacing*bodies[i].scale.x)]  # Sets global position, offset by spacing
 		bodies[i].position.x += curve.sample_baked(float(i)/float(segments)) * magnitude  # Skews segments along x axis
 		line.set_point_position(i,bodies[i].global_position)
-		
-	weapon.global_position = bodies[-1].global_position
+		outline.set_point_position(i,bodies[i].global_position)
+	
+	if weapon:
+		weapon.global_position = bodies[-1].global_position
 	

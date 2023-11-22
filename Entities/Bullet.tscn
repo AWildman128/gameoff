@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dimrvv16o162a"]
+[gd_scene load_steps=8 format=3 uid="uid://dimrvv16o162a"]
 
 [ext_resource type="Script" path="res://Entities/Bullet.gd" id="1_dqpg5"]
-[ext_resource type="Texture2D" uid="uid://blkp2r0mowhrl" path="res://Assets/bullet.png" id="2_mdsvv"]
+[ext_resource type="Texture2D" uid="uid://4syvdymc4y81" path="res://Assets/white_circle.png" id="2_gturb"]
+[ext_resource type="Script" path="res://Components/SnakeComponent.gd" id="3_lep1b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0k6o4"]
-radius = 1.0
+radius = 4.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvo2u"]
+size = Vector2(0, 0)
+
+[sub_resource type="Curve" id="Curve_xmo26"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ue5s3"]
 
 [node name="Bullet" type="CharacterBody2D"]
 collision_layer = 8
@@ -12,14 +22,31 @@ script = ExtResource("1_dqpg5")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_mdsvv")
+visible = false
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_gturb")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Bullet"]]
 collision_layer = 8
-collision_mask = 7
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_0k6o4")
 
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("RectangleShape2D_tvo2u")
+
+[node name="SnakeComponent" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("3_lep1b")
+player = NodePath("..")
+segments = 3
+spacing = 3.0
+taper = SubResource("Curve_xmo26")
+curve = SubResource("Curve_ue5s3")
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

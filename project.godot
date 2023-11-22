@@ -27,7 +27,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/script-ide/plugin.cfg", "res://addons/sprite_painter/plugin.cfg")
 
 [input]
 

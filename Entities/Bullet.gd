@@ -1,10 +1,19 @@
 extends CharacterBody2D
 
-@onready var direction = (self.global_position - get_global_mouse_position()).normalized()
+@onready var sprite_2d = $Sprite2D
+
+var direction = Vector2.LEFT
+var life_time: float = 1
+
 
 func _ready():
-	#look_at(direction)
-	velocity = -direction * 500
+	velocity = -direction * 400
+	var tween = get_tree().create_tween()
+	tween.tween_property(sprite_2d, "modulate", Color(1,1,1,0), life_time).set_ease(Tween.EASE_OUT)
+	
+	await get_tree().create_timer(life_time).timeout
+	self.queue_free()
+	
 
 func _physics_process(delta):
 	move_and_slide()
@@ -18,5 +27,5 @@ func _on_area_2d_area_entered(area):
 		area.hit(-1)
 
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_2_body_entered(body):
 	self.queue_free()
