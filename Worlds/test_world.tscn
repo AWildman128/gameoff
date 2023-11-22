@@ -30,6 +30,7 @@ point_count = 2
 script = ExtResource("1_4afap")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -7722.0
 offset_top = -4270.0
 offset_right = 8103.0
@@ -45,7 +46,7 @@ script = ExtResource("3_gjgij")
 objects = Array[ExtResource("5_ybpoc")]([SubResource("Resource_sfw1f"), SubResource("Resource_8w3rb")])
 
 [node name="Snake" parent="." instance=ExtResource("1_yq1qk")]
-position = Vector2(-223, 33)
+position = Vector2(-223, 25)
 velocity = Vector2(0, 560)
 metadata/_edit_group_ = true
 

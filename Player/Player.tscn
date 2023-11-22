@@ -1,11 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://clddbg7onlucs"]
+[gd_scene load_steps=18 format=3 uid="uid://clddbg7onlucs"]
 
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_i1s45"]
 [ext_resource type="Texture2D" uid="uid://4syvdymc4y81" path="res://Assets/white_circle.png" id="1_vu111"]
+[ext_resource type="Texture2D" uid="uid://cn34v4xh7onaj" path="res://Assets/Enemies/rifle.png" id="2_4oxgu"]
 [ext_resource type="Script" path="res://Components/SnakeComponent.gd" id="2_5rf68"]
+[ext_resource type="FontFile" uid="uid://dyff3076rpsoq" path="res://Assets/Fonts/PixelMiddle.ttf" id="2_sru23"]
 [ext_resource type="Script" path="res://Components/SnakeJump.gd" id="3_dylfg"]
 [ext_resource type="Script" path="res://Components/hurt_box.gd" id="4_cnkcu"]
 [ext_resource type="Script" path="res://Components/health_component.gd" id="5_xepyk"]
 [ext_resource type="Script" path="res://Player/Weapon.gd" id="6_fyk1l"]
+[ext_resource type="Shader" path="res://Player/OutlineStepping.gdshader" id="9_a6auy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dffg6"]
 size = Vector2(4, 4)
@@ -17,7 +21,7 @@ size = Vector2(4, 4)
 size = Vector2(4, 4)
 
 [sub_resource type="Curve" id="Curve_bxp8h"]
-_data = [Vector2(0, 0.968421), 0.0, 0.0, 0, 0, Vector2(0.180412, 0.68421), 0.0, 0.0, 0, 0, Vector2(0.463917, 0.621053), 0.0, 0.0, 0, 0, Vector2(1, 0.273684), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.968421), 0.0, 0.0, 0, 0, Vector2(0.180412, 0.68421), 0.0, 0.0, 0, 0, Vector2(0.463917, 0.621053), 0.0, 0.0, 0, 0, Vector2(1, 0.252632), -1.48366, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="Curve" id="Curve_l460v"]
@@ -26,8 +30,39 @@ bake_resolution = 10
 _data = [Vector2(0, 0.0105263), 0.0, 0.0, 0, 0, Vector2(0.262887, 0.326316), 0.0, 0.0, 0, 0, Vector2(0.510309, -0.284211), 0.0, 0.0, 0, 0, Vector2(1, 0.0315789), 0.0, 0.0, 0, 0]
 point_count = 4
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6w2mq"]
+shader = ExtResource("9_a6auy")
+
+[sub_resource type="LabelSettings" id="LabelSettings_44ugr"]
+font = ExtResource("2_sru23")
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Snake" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
+script = ExtResource("1_i1s45")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+visible = false
+z_index = -10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -74,10 +109,16 @@ entity = NodePath("..")
 
 [node name="SnakeJumpComponent" type="Node" parent="." node_paths=PackedStringArray("player", "area", "health_component")]
 script = ExtResource("3_dylfg")
+controller = true
 player = NodePath("..")
 area = NodePath("../GrabArea")
 strength = 5.4
 health_component = NodePath("../HealthComponent")
+
+[node name="BufferJumpTimer" type="Timer" parent="SnakeJumpComponent"]
+process_callback = 0
+wait_time = 0.1
+one_shot = true
 
 [node name="Weapon" type="Node2D" parent="."]
 script = ExtResource("6_fyk1l")
@@ -92,3 +133,29 @@ one_shot = true
 
 [node name="Muzzle" type="Node2D" parent="Weapon"]
 position = Vector2(8, 0)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+z_as_relative = false
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 27.0
+offset_bottom = 26.0
+texture = ExtResource("2_4oxgu")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="UI/TextureRect"]
+material = SubResource("ShaderMaterial_6w2mq")
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -16.0
+offset_right = 100.0
+offset_bottom = 9.0
+grow_vertical = 0
+text = "0/0"
+label_settings = SubResource("LabelSettings_44ugr")

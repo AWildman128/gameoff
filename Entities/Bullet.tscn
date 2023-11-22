@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dimrvv16o162a"]
+[gd_scene load_steps=9 format=3 uid="uid://dimrvv16o162a"]
 
 [ext_resource type="Script" path="res://Entities/Bullet.gd" id="1_dqpg5"]
 [ext_resource type="Texture2D" uid="uid://4syvdymc4y81" path="res://Assets/white_circle.png" id="2_gturb"]
@@ -16,8 +16,12 @@ point_count = 2
 
 [sub_resource type="Curve" id="Curve_ue5s3"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0uesb"]
+size = Vector2(0, 2)
+
 [node name="Bullet" type="CharacterBody2D"]
 collision_layer = 8
+motion_mode = 1
 script = ExtResource("1_dqpg5")
 metadata/_edit_group_ = true
 
@@ -46,6 +50,10 @@ segments = 3
 spacing = 3.0
 taper = SubResource("Curve_xmo26")
 curve = SubResource("Curve_ue5s3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
+shape = SubResource("RectangleShape2D_0uesb")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
