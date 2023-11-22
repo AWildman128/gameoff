@@ -79,5 +79,6 @@ func fire():
 
 func _on_area_2d_body_entered(body):
 	print(body)
-	body.get_node("Weapon").data = data
-	data = null
+	if body.is_in_group("Player"):
+		body.get_node("Weapon").data = data
+		data = null
