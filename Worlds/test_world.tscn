@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=3 uid="uid://dtj0f5j0opw0m"]
+[gd_scene load_steps=12 format=3 uid="uid://dtj0f5j0opw0m"]
 
-[ext_resource type="Script" path="res://Worlds/test_world.gd" id="1_4afap"]
 [ext_resource type="PackedScene" uid="uid://clddbg7onlucs" path="res://Player/Player.tscn" id="1_yq1qk"]
 [ext_resource type="TileSet" uid="uid://dk01xxg1m6gp7" path="res://LevelEditor/level_editor.tres" id="2_p38t3"]
 [ext_resource type="Script" path="res://LevelEditor/LevelEditor.gd" id="3_gjgij"]
@@ -27,7 +26,6 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.984536, 0.157895), 0.0, 0.0, 0
 point_count = 2
 
 [node name="TestWorld" type="Node2D"]
-script = ExtResource("1_4afap")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
