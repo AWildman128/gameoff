@@ -10,6 +10,8 @@ extends Node2D
 @onready var rpm_timer = $RPMTimer
 @onready var muzzle = $Muzzle
 
+@onready var texture_rect = $"../UI/TextureRect"
+@onready var label = $"../UI/TextureRect/Label"
 
 var ammo = 0
 
@@ -23,10 +25,26 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if not data: sprite.texture = null; return
+	if not data: 
+		sprite.texture = null
+		texture_rect.texture = null
+		label.text = ''
+		return
+		
 	sprite.texture = data.texture
+	texture_rect.texture = data.texture
+	label.text = str(ammo) + "/" + str(data.ammo)
 	
-	self.look_at(get_global_mouse_position())
+	var direction: Vector2
+	if InputManager.input_type == InputManager.CONTROLLER:
+		direction = Vector2(Input.get_joy_axis(0,JOY_AXIS_LEFT_X), Input.get_joy_axis(0,JOY_AXIS_LEFT_Y))
+	elif InputManager.input_type == InputManager.KBM:
+		direction = player.global_position.direction_to(player.get_global_mouse_position())
+	direction = direction.normalized()
+	var rot = atan2(direction.y, direction.x)
+	
+	self.rotation_degrees = rad_to_deg(rot)
+	
 	if self.rotation_degrees > 360 or self.rotation_degrees < -360:
 		self.rotation_degrees = 0
 	
@@ -36,16 +54,20 @@ func _process(delta):
 		sprite.flip_v = false
 	
 	if data.full_auto:
-		if Input.is_action_pressed("r_click") and rpm_timer.time_left == 0:
+		if Input.is_action_pressed("shoot") and rpm_timer.time_left == 0:
 			shoot()
 	else:
-		if Input.is_action_just_pressed("r_click") and rpm_timer.time_left == 0:
+		if Input.is_action_just_pressed("shoot") and rpm_timer.time_left == 0:
 			shoot()
 
 
 func shoot():
-	var direction = (player.global_position - get_global_mouse_position())
-	direction.normalized()
+	var direction: Vector2
+	if InputManager.input_type == InputManager.CONTROLLER:
+		direction = Vector2(Input.get_joy_axis(0,JOY_AXIS_LEFT_X), Input.get_joy_axis(0,JOY_AXIS_LEFT_Y))
+	elif InputManager.input_type == InputManager.KBM:
+		direction = get_global_mouse_position() - self.global_position
+	direction = -direction.normalized()
 	
 	print(data.rpm)
 	print(60/data.rpm)
@@ -65,9 +87,9 @@ func shoot():
 	var new_flash = muzzle_flash.instantiate()
 	new_flash.position.x += 10
 	self.add_child(new_flash)
-	
-	player.velocity = Vector2.ZERO
-	player.velocity = Vector2(direction.x*data.recoil/2, direction.y*data.recoil)
+
+	direction *= 75
+	player.velocity = Vector2(direction.x*data.recoil*0.75, direction.y*data.recoil)
 	if player.is_on_wall():
 		player.velocity.x += player.get_wall_normal().x
 	
@@ -90,7 +112,7 @@ func set_data(new_data = null):
 	if new_data:
 		if sprite:
 			sprite.texture = new_data.texture
-		ammo = new_data.ammo
+		ammo = 500
 	else:
 		sprite.texture = null
 		ammo = 0
