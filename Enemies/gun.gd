@@ -24,13 +24,8 @@ func shoot(t):
 	timer.start()
 	target = t
 
+
 func _process(delta):
-#	if hurt_box: 
-#		if data:
-#			hurt_box.monitorable = false
-#		else:
-#			hurt_box.monitorable = true
-			
 	if not data: hide(); $Area2D.monitoring=false; return
 	
 	if timer.time_left > 0:
@@ -39,45 +34,50 @@ func _process(delta):
 			ray.target_position.x = range
 			line.visible = true
 			line.points[1].x = (ray.get_collision_point() - global_position).length()
-		line.default_color = Color(255, timer.time_left / timer.wait_time, timer.time_left / timer.wait_time, 1 - timer.time_left / timer.wait_time)
+		line.default_color = Color(255, 255, 255,  1 - timer.time_left / timer.wait_time)
+
 
 func _on_timer_timeout():
 	if not data: return
 	for i in range(shots):
 		fire()
-		print("shoot")
 		await get_tree().create_timer(60/data.rpm).timeout
+	await get_tree().create_timer((60/data.rpm)*shots).timeout
 	finished_shooting.emit()
 
+
 func fire():
-	$Sprite2D. visible = true
+	#$Sprite2D. visible = true
 	await get_tree().create_timer(shot_time).timeout
 	#var hit = ray.get_collider()
-	$Sprite2D. visible = false
-#	if not hit:
-#		return
-#	if hit.is_in_group("Player"):
-#		hit.hit()
+	#$Sprite2D. visible = false
 	
-	var direction = (self.global_position - target.global_position)
-	direction.normalized()
+	var direction = self.global_position.direction_to(ray.get_collision_point())
+	direction = direction.normalized()
+	direction = -direction
 	
 	#rpm_timer.start(60/data.rpm)
 	var new_bullet = bullet.instantiate()
 	new_bullet.add_to_group("Enemy")
 	new_bullet.global_position = self.global_position
+	new_bullet.life_time = data.life_time
+	new_bullet.velocity += self.get_parent().velocity
+	new_bullet.direction = spread_vector(direction, data.spread)
 	new_bullet.top_level = true
-	new_bullet.direction = direction 
 	self.add_child(new_bullet)
-
-
-#func _on_area_2d_area_entered(area):
-#	print('penis')
-#	if area.is_in_group("Bullet"):
-#		data = null
 
 
 func _on_area_2d_body_entered(body):
 	print(body)
-	body.get_node("Weapon").data = data
-	data = null
+	if body.is_in_group("Player"):
+		body.get_node("Weapon").data = data
+		data = null
+
+
+func spread_vector(vector: Vector2, spread: float):
+	var angle_rad = deg_to_rad(randf_range(-spread, spread)*20)
+	var new_vector = Vector2(
+		vector.x * cos(angle_rad) - vector.y * sin(angle_rad),
+		vector.x * sin(angle_rad) + vector.y * cos(angle_rad)
+	)
+	return new_vector.normalized()
