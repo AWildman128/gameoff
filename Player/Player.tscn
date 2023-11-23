@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://4syvdymc4y81" path="res://Assets/white_circle.png" id="1_vu111"]
 [ext_resource type="Texture2D" uid="uid://cn34v4xh7onaj" path="res://Assets/Enemies/rifle.png" id="2_4oxgu"]
 [ext_resource type="Script" path="res://Components/SnakeComponent.gd" id="2_5rf68"]
-[ext_resource type="FontFile" uid="uid://c7iajwx3bc43g" path="res://Assets/Fonts/PixelMiddle.ttf" id="2_sru23"]
+[ext_resource type="FontFile" uid="uid://cbg3fsoitilu4" path="res://Assets/Fonts/PixelMiddle.ttf" id="2_sru23"]
 [ext_resource type="Script" path="res://Components/SnakeJump.gd" id="3_dylfg"]
 [ext_resource type="PackedScene" uid="uid://dvoena16xgbh5" path="res://Player/pause_menu.tscn" id="3_scga7"]
 [ext_resource type="Script" path="res://Components/hurt_box.gd" id="4_cnkcu"]
