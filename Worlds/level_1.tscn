@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://dt6est0c4d77p"]
+[gd_scene load_steps=10 format=3 uid="uid://dt6est0c4d77p"]
 
-[ext_resource type="Script" path="res://Worlds/level_1.gd" id="1_dmfi8"]
 [ext_resource type="PackedScene" uid="uid://clddbg7onlucs" path="res://Player/Player.tscn" id="1_flbl0"]
 [ext_resource type="TileSet" uid="uid://dk01xxg1m6gp7" path="res://LevelEditor/level_editor.tres" id="2_kh4eo"]
 [ext_resource type="Script" path="res://LevelEditor/LevelEditor.gd" id="3_ogjp7"]
 [ext_resource type="PackedScene" uid="uid://ddtfx4j3okrh8" path="res://Enemies/MeleeBear.tscn" id="4_2s8oc"]
 [ext_resource type="Script" path="res://LevelEditor/object_data.gd" id="5_enpq7"]
+[ext_resource type="Script" path="res://Worlds/SceneChange.gd" id="7_nngsj"]
+[ext_resource type="PackedScene" uid="uid://gy1khttlesur" path="res://Worlds/level_2.tscn" id="8_gkmju"]
 
 [sub_resource type="Resource" id="Resource_fc8t0"]
 script = ExtResource("5_enpq7")
@@ -16,7 +17,6 @@ cell = Vector2i(0, 21)
 [sub_resource type="CircleShape2D" id="CircleShape2D_m6rwo"]
 
 [node name="Level 1" type="Node2D"]
-script = ExtResource("1_dmfi8")
 
 [node name="Snake" parent="." instance=ExtResource("1_flbl0")]
 
@@ -32,10 +32,9 @@ objects = Array[ExtResource("5_enpq7")]([SubResource("Resource_fc8t0")])
 position = Vector2(697, -70)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("7_nngsj")
+world = ExtResource("8_gkmju")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_m6rwo")
 metadata/_edit_lock_ = true
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
