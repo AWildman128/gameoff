@@ -64,7 +64,7 @@ func _process(delta):
 func shoot():
 	var direction: Vector2
 	if InputManager.input_type == InputManager.CONTROLLER:
-		direction = Vector2(Input.get_joy_axis(0,JOY_AXIS_LEFT_X), Input.get_joy_axis(0,JOY_AXIS_LEFT_Y))
+		direction += Vector2(Input.get_joy_axis(0,JOY_AXIS_LEFT_X), Input.get_joy_axis(0,JOY_AXIS_LEFT_Y))
 	elif InputManager.input_type == InputManager.KBM:
 		direction = get_global_mouse_position() - self.global_position
 	direction = -direction.normalized()

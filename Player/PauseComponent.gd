@@ -1,6 +1,6 @@
 extends Node
 
-@onready var pause_menu = $"../Camera2D/PauseMenu"
+@onready var pause_menu = $"../UI/PauseMenu"
 
 var paused = false
 
