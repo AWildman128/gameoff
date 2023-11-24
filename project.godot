@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 InputManager="*res://Globals/InputManager.gd"
 LevelManager="*res://Globals/scene_changer.gd"
+MusicManager="*res://Globals/MusicManager.gd"
 
 [display]
 
