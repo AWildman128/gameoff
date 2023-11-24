@@ -11,5 +11,5 @@ bullets = 1
 rpm = 480.0
 spread = 0.2
 recoil = 2.0
-life_time = 2.0
+life_time = 1.0
 ammo = 24
