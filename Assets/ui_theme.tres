@@ -1,0 +1,27 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dgla0g5np2oxc"]
+
+[ext_resource type="FontFile" uid="uid://cbg3fsoitilu4" path="res://Assets/Fonts/PixelMiddle.ttf" id="1_8mxtm"]
+[ext_resource type="Texture2D" uid="uid://btt2an30cvr5y" path="res://Assets/button_9slice_hover.png" id="2_lne4h"]
+[ext_resource type="Texture2D" uid="uid://c0jdoh1lmp54q" path="res://Assets/button_9slice.png" id="2_vcbrr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dtw3i"]
+texture = ExtResource("2_lne4h")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7hgwd"]
+texture = ExtResource("2_vcbrr")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[resource]
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_8mxtm")
+Button/styles/disabled = null
+Button/styles/focus = SubResource("StyleBoxTexture_dtw3i")
+Button/styles/hover = SubResource("StyleBoxTexture_dtw3i")
+Button/styles/normal = SubResource("StyleBoxTexture_7hgwd")
