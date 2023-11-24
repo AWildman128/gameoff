@@ -12,4 +12,4 @@ func _on_area_2d_body_entered(body):
 	print('penis')
 	if body.is_in_group("Player"):
 		if world:
-			LevelManager.change_scene(world)
+			SceneChanger.change_scene(world)

@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="Climbing Game"
-run/main_scene="res://Worlds/level_select.tscn"
+run/main_scene="res://Worlds/test_world.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 InputManager="*res://Globals/InputManager.gd"
-LevelManager="*res://Globals/scene_changer.gd"
+SceneChanger="*res://Globals/scene_changer.gd"
 
 [display]
 
@@ -32,7 +32,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/script-ide/plugin.cfg", "res://addons/sprite_painter/plugin.cfg")
 
 [input]
 
@@ -98,7 +98,5 @@ pause={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
-textures/decals/filter=2
-textures/light_projectors/filter=2
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true

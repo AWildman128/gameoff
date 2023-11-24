@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dtj0f5j0opw0m"]
+[gd_scene load_steps=12 format=3 uid="uid://dtj0f5j0opw0m"]
 
 [ext_resource type="PackedScene" uid="uid://clddbg7onlucs" path="res://Player/Player.tscn" id="1_yq1qk"]
 [ext_resource type="TileSet" uid="uid://dk01xxg1m6gp7" path="res://LevelEditor/level_editor.tres" id="2_p38t3"]
@@ -20,6 +20,10 @@ script = ExtResource("5_ybpoc")
 name = "Ranged"
 scene = ExtResource("6_482ap")
 cell = Vector2i(1, 21)
+
+[sub_resource type="Curve" id="Curve_l787i"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.984536, 0.157895), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="TestWorld" type="Node2D"]
 
@@ -43,6 +47,17 @@ objects = Array[ExtResource("5_ybpoc")]([SubResource("Resource_sfw1f"), SubResou
 position = Vector2(-223, 25)
 velocity = Vector2(0, 560)
 metadata/_edit_group_ = true
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
+position = Vector2(-127, 78)
+points = PackedVector2Array(648, -115, 672, -91, 722, -119, 799, -90)
+width = 5.0
+width_curve = SubResource("Curve_l787i")
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="WeaponKiosk" parent="." instance=ExtResource("8_8m6dg")]
 position = Vector2(-194, 56)
