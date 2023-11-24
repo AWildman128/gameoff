@@ -22,6 +22,9 @@ func _ready():# Called when the node enters the scene tree for the first time.
 			if object.cell == self.get_cell_atlas_coords(OBJECT_LAYER, cell):
 				var new_entity: CharacterBody2D = object.scene.instantiate()
 				new_entity.global_position = Vector2(cell.x * 16 + 8, cell.y * 16 + 8)
+				if new_entity.get_node("Gun"):
+					if object.weapon:
+						new_entity.get_node("Gun").data = object.weapon
 
 				self.erase_cell(OBJECT_LAYER, cell)
 				self.add_child(new_entity)

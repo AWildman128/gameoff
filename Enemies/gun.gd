@@ -9,6 +9,8 @@ const aimSpeed = 10
 @onready var line = $RayCast2D/Line2D
 @onready var bullet = preload("res://Entities/Bullet.tscn")
 @onready var rpm_timer = $RPMTimer
+@onready var sprite = $Sprite2D2
+
 
 var shots = 3
 var shot_time = .5
@@ -28,6 +30,8 @@ func shoot(t):
 func _process(delta):
 	if not data: hide(); $Area2D.monitoring=false; return
 	
+	sprite.texture = data.texture
+	
 	if timer.time_left > 0:
 		if target != null:
 			look_at(target.global_position)
@@ -39,7 +43,7 @@ func _process(delta):
 
 func _on_timer_timeout():
 	if not data: return
-	for i in range(shots):
+	for i in range(data.burst):
 		fire()
 		await get_tree().create_timer(60/data.rpm).timeout
 	await get_tree().create_timer((60/data.rpm)*shots).timeout
@@ -57,14 +61,15 @@ func fire():
 	direction = -direction
 	
 	#rpm_timer.start(60/data.rpm)
-	var new_bullet = bullet.instantiate()
-	new_bullet.add_to_group("Enemy")
-	new_bullet.global_position = self.global_position
-	new_bullet.life_time = data.life_time
-	new_bullet.velocity += self.get_parent().velocity
-	new_bullet.direction = spread_vector(direction, data.spread)
-	new_bullet.top_level = true
-	self.add_child(new_bullet)
+	for i in range(data.bullets):
+		var new_bullet = bullet.instantiate()
+		new_bullet.add_to_group("Enemy")
+		new_bullet.global_position = self.global_position
+		new_bullet.life_time = data.life_time
+		new_bullet.velocity += self.get_parent().velocity
+		new_bullet.direction = spread_vector(direction, data.spread)
+		new_bullet.top_level = true
+		self.add_child(new_bullet)
 
 
 func _on_area_2d_body_entered(body):

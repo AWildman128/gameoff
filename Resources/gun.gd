@@ -9,3 +9,4 @@ class_name Gun
 @export_range(0,10,0.1) var recoil: float
 @export_range(0,1,0.1) var life_time: float
 @export var ammo: int
+@export var burst: int

@@ -13,3 +13,4 @@ spread = 0.2
 recoil = 2.0
 life_time = 1.0
 ammo = 24
+burst = 3
