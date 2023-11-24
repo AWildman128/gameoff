@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://3ga4bk3l6ppa"]
 
 [ext_resource type="Script" path="res://UI/floor_select.gd" id="1_3ofxv"]
-[ext_resource type="Texture2D" uid="uid://c6uwbplyuhkds" path="res://Assets/level_select_background.png" id="1_723nh"]
+[ext_resource type="Texture2D" uid="uid://j4knkc4yol1c" path="res://Assets/level_select_background.png" id="1_723nh"]
 [ext_resource type="Theme" uid="uid://dgla0g5np2oxc" path="res://Assets/ui_theme.tres" id="1_kywr1"]
 [ext_resource type="Script" path="res://Worlds/level_select.gd" id="1_m7vk5"]
-[ext_resource type="FontFile" uid="uid://cfsn524hrfka2" path="res://Assets/Fonts/Whacky_Joe_Monospaced.ttf" id="2_6i0tn"]
+[ext_resource type="FontFile" uid="uid://de05t4wtvyfbt" path="res://Assets/Fonts/Whacky_Joe_Monospaced.ttf" id="2_6i0tn"]
 [ext_resource type="PackedScene" uid="uid://b4j637y60hnu2" path="res://Worlds/floor_1.tscn" id="5_rsedw"]
 [ext_resource type="PackedScene" uid="uid://cp2jtb447c6o6" path="res://Worlds/courtyard.tscn" id="6_q4y4d"]
 

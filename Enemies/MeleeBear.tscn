@@ -98,6 +98,7 @@ _data = {
 
 [node name="MeleeBear" type="CharacterBody2D"]
 collision_layer = 4
+collision_mask = 17
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

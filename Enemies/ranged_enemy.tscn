@@ -18,6 +18,7 @@ size = Vector2(6, 5)
 
 [node name="RangedEnemy" type="CharacterBody2D"]
 collision_layer = 4
+collision_mask = 17
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_cfv5j")
