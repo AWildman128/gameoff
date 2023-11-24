@@ -11,7 +11,7 @@ func _ready():
 	
 
 func change_scene(target):
-	tween.tween_property(transition, "color", Color(0,0,0,255), 1)
-	await tween.finished
-	get_tree().change_scene_to_packed(target)
-	tween.tween_property(transition, "color", Color(0,0,0,0), 1)
+	#tween.tween_property(transition, "color", Color(0,0,0,255), 1)
+	#await tween.finished
+	self.get_tree().change_scene_to_packed(target)
+	#tween.tween_property(transition, "color", Color(0,0,0,0), 1)
