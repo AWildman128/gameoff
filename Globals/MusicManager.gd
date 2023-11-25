@@ -16,7 +16,7 @@ var Volume = {
 
 
 var songs = {
-	GAME: preload("res://Assets/Music/Snake_Attack_6e.mp3")
+
 }
 
 
