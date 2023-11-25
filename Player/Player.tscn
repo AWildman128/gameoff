@@ -168,3 +168,5 @@ offset_bottom = 9.0
 grow_vertical = 0
 text = "0/0"
 label_settings = SubResource("LabelSettings_44ugr")
+
+[connection signal="visibility_changed" from="UI/PauseMenu" to="UI/PauseMenu" method="_on_visibility_changed"]

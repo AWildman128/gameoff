@@ -10,7 +10,7 @@ func _ready():
 	tween.tween_property(label, "position", Vector2(24,16-5), 1).set_trans(Tween.TRANS_SINE)
 	tween.set_loops()
 	
-	MusicManager.play_song(5)
+	MusicManager.play_song(MusicManager.GAME)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

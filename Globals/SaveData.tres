@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SaveData" load_steps=2 format=3 uid="uid://dsvvlvqsi2s2c"]
+
+[ext_resource type="Script" path="res://Globals/save_data.gd" id="1_cbvdt"]
+
+[resource]
+script = ExtResource("1_cbvdt")
+master = 0.0
+music = -6.93575
+sound = 0.0
