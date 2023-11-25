@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://LevelEditor/object_data.gd" id="5_ybpoc"]
 [ext_resource type="PackedScene" uid="uid://ces8lc5s2ityk" path="res://Enemies/ranged_enemy.tscn" id="6_482ap"]
 [ext_resource type="Resource" uid="uid://dap4m8j6q60tm" path="res://Resources/Shotgun.tres" id="7_p43sj"]
-[ext_resource type="PackedScene" path="res://Resources/weapon_kiosk.tscn" id="8_8m6dg"]
+[ext_resource type="PackedScene" uid="uid://bptq07qw4byd2" path="res://Resources/weapon_kiosk.tscn" id="8_8m6dg"]
 [ext_resource type="Resource" uid="uid://ccyqvuqo5fllx" path="res://Resources/Rifle.tres" id="9_dk4v1"]
 
 [sub_resource type="Resource" id="Resource_sfw1f"]

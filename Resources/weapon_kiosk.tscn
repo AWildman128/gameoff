@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bptq07qw4byd2"]
+[gd_scene load_steps=6 format=3 uid="uid://bptq07qw4byd2"]
 
-[ext_resource type="Texture2D" uid="uid://2mkkic6u8bxc" path="res://LevelEditor/monochrome_tilemap_transparent_packed.png" id="1_prkvk"]
+[ext_resource type="Texture2D" uid="uid://c6b7ywdcib2vd" path="res://LevelEditor/monochrome_tilemap_transparent_packed.png" id="1_prkvk"]
 [ext_resource type="Script" path="res://Weapon.gd" id="2_xisq2"]
-[ext_resource type="Resource" uid="uid://cl71fw3ji1a22" path="res://Resources/Shotgun.tres" id="3_deupu"]
+[ext_resource type="Resource" uid="uid://dap4m8j6q60tm" path="res://Resources/Shotgun.tres" id="3_deupu"]
+[ext_resource type="Texture2D" uid="uid://dgeb7ddkxrt3b" path="res://Assets/Enemies/shotgun.png" id="4_ivjrq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4nv40"]
 size = Vector2(12, 12)
@@ -17,7 +18,8 @@ region_enabled = true
 region_rect = Rect2(48, 128, 16, 16)
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
-position = Vector2(0, -4.96029)
+position = Vector2(0, -7.46667)
+texture = ExtResource("4_ivjrq")
 
 [node name="HurtboxComponent" type="Area2D" parent="."]
 collision_layer = 0
