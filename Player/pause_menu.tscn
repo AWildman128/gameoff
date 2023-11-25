@@ -40,7 +40,6 @@ grow_vertical = 2
 tabs_visible = false
 
 [node name="Menu" type="Control" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Menu"]
@@ -86,6 +85,7 @@ theme = ExtResource("2_r0ipo")
 text = "Quit"
 
 [node name="Settings" type="Control" parent="TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("3_ub6ei")
 

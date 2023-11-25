@@ -28,3 +28,4 @@ func set_world(w: PackedScene):
 	world_name = new_world.name
 	
 	self.text = world_name
+	self.name = world_name
