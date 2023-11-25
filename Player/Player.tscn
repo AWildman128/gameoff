@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://clddbg7onlucs"]
+[gd_scene load_steps=21 format=3 uid="uid://clddbg7onlucs"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_i1s45"]
 [ext_resource type="Texture2D" uid="uid://4syvdymc4y81" path="res://Assets/white_circle.png" id="1_vu111"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Player/Weapon.gd" id="6_fyk1l"]
 [ext_resource type="Shader" path="res://Player/OutlineStepping.gdshader" id="9_a6auy"]
 [ext_resource type="Script" path="res://Player/PauseComponent.gd" id="12_rh7a6"]
+[ext_resource type="Script" path="res://Player/KeyboardController.gd" id="13_d3f65"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dffg6"]
 size = Vector2(4, 4)
@@ -168,5 +169,9 @@ offset_bottom = 9.0
 grow_vertical = 0
 text = "0/0"
 label_settings = SubResource("LabelSettings_44ugr")
+
+[node name="KeyboardController" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("13_d3f65")
+player = NodePath("..")
 
 [connection signal="visibility_changed" from="UI/PauseMenu" to="UI/PauseMenu" method="_on_visibility_changed"]

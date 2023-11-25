@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://0434gef1k40g"]
+[gd_scene load_steps=16 format=3 uid="uid://dr8ef8h8u5fb4"]
 
 [ext_resource type="PackedScene" uid="uid://clddbg7onlucs" path="res://Player/Player.tscn" id="1_m6mvf"]
 [ext_resource type="TileSet" uid="uid://dk01xxg1m6gp7" path="res://LevelEditor/level_editor.tres" id="2_schgv"]
@@ -8,9 +8,9 @@
 [ext_resource type="Resource" uid="uid://dap4m8j6q60tm" path="res://Resources/Shotgun.tres" id="6_j4tqm"]
 [ext_resource type="PackedScene" uid="uid://ddtfx4j3okrh8" path="res://Enemies/MeleeBear.tscn" id="7_uayff"]
 [ext_resource type="Resource" uid="uid://ccyqvuqo5fllx" path="res://Resources/Rifle.tres" id="8_rhwpf"]
-[ext_resource type="PackedScene" uid="uid://bptq07qw4byd2" path="res://Resources/weapon_kiosk.tscn" id="9_6pmln"]
+[ext_resource type="PackedScene" path="res://Resources/weapon_kiosk.tscn" id="9_6pmln"]
 [ext_resource type="Script" path="res://Worlds/SceneChange.gd" id="10_iabgg"]
-[ext_resource type="PackedScene" uid="uid://dwjcccr572hqe" path="res://Worlds/peak_pinnacle.tscn" id="11_86jih"]
+[ext_resource type="PackedScene" path="res://Worlds/peak_pinnacle.tscn" id="11_86jih"]
 
 [sub_resource type="Resource" id="Resource_6g3bj"]
 script = ExtResource("5_bbr60")
@@ -51,6 +51,7 @@ position = Vector2(-317, -728)
 
 [node name="SceneChangeComponent" type="Area2D" parent="."]
 script = ExtResource("10_iabgg")
+unlock_floor = 11
 world = ExtResource("11_86jih")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneChangeComponent"]

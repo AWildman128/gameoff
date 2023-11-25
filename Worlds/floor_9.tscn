@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dfbcqf5168g4s"]
+[gd_scene load_steps=16 format=3 uid="uid://wd4y1e4g5dhh"]
 
 [ext_resource type="TileSet" uid="uid://dk01xxg1m6gp7" path="res://LevelEditor/level_editor.tres" id="1_w8smf"]
 [ext_resource type="Script" path="res://LevelEditor/LevelEditor.gd" id="2_xwmvr"]
@@ -8,9 +8,9 @@
 [ext_resource type="Resource" uid="uid://ccyqvuqo5fllx" path="res://Resources/Rifle.tres" id="6_38eqn"]
 [ext_resource type="Resource" uid="uid://dap4m8j6q60tm" path="res://Resources/Shotgun.tres" id="7_w0p6h"]
 [ext_resource type="PackedScene" uid="uid://clddbg7onlucs" path="res://Player/Player.tscn" id="8_0bkj7"]
-[ext_resource type="PackedScene" uid="uid://bptq07qw4byd2" path="res://Resources/weapon_kiosk.tscn" id="8_6846h"]
+[ext_resource type="PackedScene" path="res://Resources/weapon_kiosk.tscn" id="8_6846h"]
 [ext_resource type="Script" path="res://Worlds/SceneChange.gd" id="10_1no82"]
-[ext_resource type="PackedScene" uid="uid://0434gef1k40g" path="res://Worlds/floor_10.tscn" id="11_qmvtv"]
+[ext_resource type="PackedScene" uid="uid://dr8ef8h8u5fb4" path="res://Worlds/floor_10.tscn" id="11_qmvtv"]
 
 [sub_resource type="Resource" id="Resource_xxmso"]
 script = ExtResource("4_r0i7c")
@@ -64,6 +64,7 @@ position = Vector2(1017, -120)
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("10_1no82")
+unlock_floor = 10
 world = ExtResource("11_qmvtv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneChangeComponent"]

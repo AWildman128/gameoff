@@ -1,12 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://3ga4bk3l6ppa"]
+[gd_scene load_steps=19 format=3 uid="uid://3ga4bk3l6ppa"]
 
 [ext_resource type="Script" path="res://UI/floor_select.gd" id="1_3ofxv"]
-[ext_resource type="Texture2D" uid="uid://c6uwbplyuhkds" path="res://Assets/level_select_background.png" id="1_723nh"]
+[ext_resource type="Texture2D" uid="uid://j4knkc4yol1c" path="res://Assets/level_select_background.png" id="1_723nh"]
 [ext_resource type="Theme" uid="uid://dgla0g5np2oxc" path="res://Assets/ui_theme.tres" id="1_kywr1"]
 [ext_resource type="Script" path="res://Worlds/level_select.gd" id="1_m7vk5"]
-[ext_resource type="FontFile" uid="uid://cfsn524hrfka2" path="res://Assets/Fonts/Whacky_Joe_Monospaced.ttf" id="2_6i0tn"]
+[ext_resource type="FontFile" uid="uid://de05t4wtvyfbt" path="res://Assets/Fonts/Whacky_Joe_Monospaced.ttf" id="2_6i0tn"]
+[ext_resource type="Texture2D" uid="uid://b7eqmn1bsspck" path="res://Assets/lock.png" id="4_cwqus"]
+[ext_resource type="PackedScene" uid="uid://dr8ef8h8u5fb4" path="res://Worlds/floor_10.tscn" id="5_ndy0c"]
 [ext_resource type="PackedScene" uid="uid://b4j637y60hnu2" path="res://Worlds/floor_1.tscn" id="5_rsedw"]
+[ext_resource type="PackedScene" path="res://Worlds/floor_9.tscn" id="6_2xs4j"]
 [ext_resource type="PackedScene" uid="uid://cp2jtb447c6o6" path="res://Worlds/courtyard.tscn" id="6_q4y4d"]
+[ext_resource type="PackedScene" path="res://Worlds/floor_8.tscn" id="7_ranuj"]
+[ext_resource type="PackedScene" path="res://Worlds/floor_7.tscn" id="9_p0y3l"]
+[ext_resource type="PackedScene" path="res://Worlds/floor_6.tscn" id="10_r4eke"]
+[ext_resource type="PackedScene" uid="uid://c0ca0nuqniajd" path="res://Worlds/floor_5.tscn" id="11_qc51t"]
+[ext_resource type="PackedScene" uid="uid://jefwdot1yon6" path="res://Worlds/floor_4.tscn" id="12_qd2ut"]
+[ext_resource type="PackedScene" uid="uid://tbfu3odjm2wh" path="res://Worlds/floor_3.tscn" id="13_g8rod"]
+[ext_resource type="PackedScene" uid="uid://cu50snr5qaog1" path="res://Worlds/floor_2.tscn" id="14_8244f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vf3rg"]
 font = ExtResource("2_6i0tn")
@@ -18,44 +28,136 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_kywr1")
 script = ExtResource("1_m7vk5")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 16.0
+offset_top = 19.7506
 offset_right = 102.0
-offset_bottom = 66.0
+offset_bottom = 69.7506
 text = "Level
 Select"
 label_settings = SubResource("LabelSettings_vf3rg")
 
-[node name="Levels" type="VBoxContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -31.5
-offset_top = -22.0
-offset_right = 31.5
-offset_bottom = 22.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+follow_focus = true
+scroll_vertical = 94
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 151
+theme_override_constants/margin_bottom = 20
+
+[node name="Levels" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 focus_mode = 2
 theme = ExtResource("1_kywr1")
 
-[node name="Floor 1" type="Button" parent="Levels"]
+[node name="Floor 10" type="Button" parent="ScrollContainer/MarginContainer/Levels"]
+layout_mode = 2
+theme = ExtResource("1_kywr1")
+disabled = true
+text = "Floor 10"
+icon = ExtResource("4_cwqus")
+script = ExtResource("1_3ofxv")
+world = ExtResource("5_ndy0c")
+
+[node name="Floor 9" type="Button" parent="ScrollContainer/MarginContainer/Levels"]
+layout_mode = 2
+theme = ExtResource("1_kywr1")
+disabled = true
+text = "Floor 9"
+icon = ExtResource("4_cwqus")
+script = ExtResource("1_3ofxv")
+world = ExtResource("6_2xs4j")
+
+[node name="Floor 8" type="Button" parent="ScrollContainer/MarginContainer/Levels"]
+layout_mode = 2
+theme = ExtResource("1_kywr1")
+disabled = true
+text = "Floor 8"
+icon = ExtResource("4_cwqus")
+script = ExtResource("1_3ofxv")
+world = ExtResource("7_ranuj")
+
+[node name="Floor 7" type="Button" parent="ScrollContainer/MarginContainer/Levels"]
+layout_mode = 2
+theme = ExtResource("1_kywr1")
+disabled = true
+text = "Floor 7"
+icon = ExtResource("4_cwqus")
+script = ExtResource("1_3ofxv")
+world = ExtResource("9_p0y3l")
+
+[node name="Floor 6" type="Button" parent="ScrollContainer/MarginContainer/Levels"]
+layout_mode = 2
+theme = ExtResource("1_kywr1")
+disabled = true
+text = "Floor 6"
+icon = ExtResource("4_cwqus")
+script = ExtResource("1_3ofxv")
+world = ExtResource("10_r4eke")
+
+[node name="Floor 5" type="Button" parent="ScrollContainer/MarginContainer/Levels"]
+layout_mode = 2
+theme = ExtResource("1_kywr1")
+disabled = true
+text = "Floor 5"
+icon = ExtResource("4_cwqus")
+script = ExtResource("1_3ofxv")
+world = ExtResource("11_qc51t")
+
+[node name="Floor 4" type="Button" parent="ScrollContainer/MarginContainer/Levels"]
+layout_mode = 2
+theme = ExtResource("1_kywr1")
+disabled = true
+text = "Floor 4"
+icon = ExtResource("4_cwqus")
+script = ExtResource("1_3ofxv")
+world = ExtResource("12_qd2ut")
+
+[node name="Floor 3" type="Button" parent="ScrollContainer/MarginContainer/Levels"]
+layout_mode = 2
+theme = ExtResource("1_kywr1")
+disabled = true
+text = "Floor 3"
+icon = ExtResource("4_cwqus")
+script = ExtResource("1_3ofxv")
+world = ExtResource("13_g8rod")
+
+[node name="Floor 2" type="Button" parent="ScrollContainer/MarginContainer/Levels"]
+layout_mode = 2
+theme = ExtResource("1_kywr1")
+disabled = true
+text = "Floor 2"
+icon = ExtResource("4_cwqus")
+script = ExtResource("1_3ofxv")
+world = ExtResource("14_8244f")
+
+[node name="Floor 1" type="Button" parent="ScrollContainer/MarginContainer/Levels"]
 layout_mode = 2
 focus_next = NodePath("../LevelButton")
 focus_previous = NodePath("../LevelButton")
 theme = ExtResource("1_kywr1")
+disabled = true
 text = "Floor 1"
+icon = ExtResource("4_cwqus")
 script = ExtResource("1_3ofxv")
 world = ExtResource("5_rsedw")
 
-[node name="Courtyard" type="Button" parent="Levels"]
+[node name="Courtyard" type="Button" parent="ScrollContainer/MarginContainer/Levels"]
 layout_mode = 2
 focus_next = NodePath("../LevelButton2")
 focus_previous = NodePath("../LevelButton2")
@@ -77,6 +179,7 @@ texture = ExtResource("1_723nh")
 stretch_mode = 1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_offset = Vector2(14545.9, 14545.9)
 motion_mirroring = Vector2(384, 224)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]

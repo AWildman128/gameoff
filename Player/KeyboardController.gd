@@ -2,74 +2,35 @@ extends Node
 class_name KeyboardController
 
 @export var player: CharacterBody2D
-@export var speed: int = 50
-@export_range(1,10, 0.1) var strength: float  # Jump strength
-@export var area: Area2D
+@export var speed: int = 1
+@export var amplitude = 100
+@export var frequency = 0.008
 
-var grabbing = false
-var grab_target: HurtboxComponent
-var wall_jumps = 1
+@onready var tween: Tween = self.get_tree().create_tween()
 
 
 func _ready():
-	if not area: area = Area2D.new()
-	area.connect("area_entered", on_area_entered)
-	area.connect("area_exited", on_area_exited)
-	
 	if not player: player = CharacterBody2D.new()
-
+	
 
 func _physics_process(delta):
-	if not player.is_on_floor_only() and not player.is_on_wall():
-		player.velocity.y += 20  # Gravity
-	elif player.is_on_wall_only():
-		player.velocity.y = lerp(player.velocity.y, 30.0, 0.1)  # Slowly slide down wall (does work)
-		player.velocity.x = -player.get_wall_normal().x
-	else:
-		player.velocity.x = lerp(player.velocity.x, 0.0, 0.1)  # Floor friction
-	
-	var direction = Vector2((Input.get_action_strength("right")-Input.get_action_strength("left")), (Input.get_action_strength("down") - Input.get_action_strength("up")))
+	var direction: Vector2
+	if InputManager.input_type == InputManager.CONTROLLER:
+		direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
+	elif InputManager.input_type == InputManager.KBM:
+		direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 
-	player.velocity.x += direction.x * speed / 7
-	if direction == Vector2(1,0):
-		direction = Vector2(sqrt(3)/2,-0.5)
-#	if direction == Vector2(1,-1):
-#		direction = Vector2(0.5,-sqrt(3)/2)
-
-	if direction == Vector2(-1,0):
-		direction = Vector2(-sqrt(3)/2,-0.5)
-#	if direction == Vector2(-1,-1):
-#		direction = Vector2(-0.5,-sqrt(3)/2)
 	direction = direction.normalized()
 	print(direction)
-	if Input.is_action_just_pressed("ui_accept") and (player.is_on_floor() or grabbing or (player.is_on_wall() and wall_jumps > 0)):
-		if not player.is_on_wall_only():
-			player.velocity = direction * strength * 60  # Launches snake towards direction of cursor
-		elif player.is_on_wall_only():
-			var dir = player.get_wall_normal().normalized()
-			if direction.y > 0:
-				dir.y = -1
-			elif direction.y < 0:
-				dir.y = 1
-			#print(dir)
-			player.velocity = Vector2(0.5 * dir.x,-1*dir.y) * strength * 62  # Launches snake towards direction of cursor
-		
-		if grabbing and grab_target:
-			grab_target.hit(-1)
-			grabbing = false
-			grab_target = null
 	
-	player.move_and_slide()
+	if abs(direction.x) >= 0.5 and player.is_on_floor_only():
+		# Update the time variable based on delta time
+		var time = Time.get_ticks_msec()
+		# Calculate the scale factor using the sine function
+		var scale_factor = abs(sin(time * frequency))
+
+		# Adjust the player's velocity based on the scale factor
+		player.velocity.x = direction.x * scale_factor * amplitude * speed
 	
-	if grabbing and grab_target:
-		player.global_position = grab_target.global_position
-
-
-func on_area_entered(area):
-	if area.is_in_group("Enemy"):
-		grabbing = true
-		grab_target = area
-
-
-func on_area_exited(area):
-	pass
+		#print(scale_factor)
+	

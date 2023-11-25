@@ -1,7 +1,11 @@
+@tool
 extends Control
 
 @onready var main = $"../../PauseComponent"
 @onready var tab_container = $TabContainer
+
+func _ready():
+	$TabContainer/Menu/MarginContainer/VBoxContainer/Resume.grab_focus()
 
 func _on_resume_pressed():
 	main.pausemenu()
@@ -22,3 +26,9 @@ func _on_settings_pressed():
 
 func _on_button_pressed():
 	MusicManager.play_song(MusicManager.GAME)
+
+
+func _on_main_menu_pressed():
+	self.hide()
+	get_tree().paused = false
+	LevelManager.change_scene(load("res://Worlds/level_select.tscn"))

@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhxyvp7v0rh3p"]
+[gd_scene load_steps=8 format=3 uid="uid://dhxyvp7v0rh3p"]
 
 [ext_resource type="Script" path="res://Player/pause_menu.gd" id="1_w46or"]
 [ext_resource type="Theme" uid="uid://dgla0g5np2oxc" path="res://Assets/ui_theme.tres" id="2_r0ipo"]
-[ext_resource type="Script" path="res://Player/Resume.gd" id="3_61lex"]
 [ext_resource type="Script" path="res://Player/Settings.gd" id="3_ub6ei"]
 [ext_resource type="FontFile" uid="uid://bsstdhukh8agv" path="res://Assets/Fonts/Scrambled_Eggs_Short_Lowercase.ttf" id="4_00srj"]
 
@@ -17,7 +16,6 @@ font = ExtResource("4_00srj")
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
-z_index = 2
 y_sort_enabled = true
 layout_mode = 3
 anchors_preset = 15
@@ -68,7 +66,6 @@ focus_neighbor_top = NodePath("../Quit")
 focus_neighbor_bottom = NodePath("../Settings")
 theme = ExtResource("2_r0ipo")
 text = "Resume"
-script = ExtResource("3_61lex")
 
 [node name="Settings" type="Button" parent="TabContainer/Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -76,6 +73,13 @@ focus_neighbor_top = NodePath("../Resume")
 focus_neighbor_bottom = NodePath("../Quit")
 theme = ExtResource("2_r0ipo")
 text = "Settings "
+
+[node name="MainMenu" type="Button" parent="TabContainer/Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Resume")
+focus_neighbor_bottom = NodePath("../Quit")
+theme = ExtResource("2_r0ipo")
+text = "Main Menu "
 
 [node name="Quit" type="Button" parent="TabContainer/Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -121,6 +125,12 @@ size_flags_vertical = 3
 layout_mode = 2
 text = "Settings"
 
+[node name="CheckButton" type="CheckButton" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../MasterVolume3/SoundSlider")
+focus_neighbor_bottom = NodePath("../MasterVolume/MasterSlider")
+text = "Fullscreen"
+
 [node name="MasterVolume" type="VBoxContainer" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
@@ -134,6 +144,8 @@ horizontal_alignment = 1
 [node name="MasterSlider" type="HSlider" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/MasterVolume"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_top = NodePath("../../CheckButton")
+focus_neighbor_bottom = NodePath("../../MasterVolume2/MusicSlider")
 max_value = 1.0
 step = 0.05
 value = 1.0
@@ -156,6 +168,8 @@ horizontal_alignment = 1
 [node name="MusicSlider" type="HSlider" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/MasterVolume2"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_top = NodePath("../../MasterVolume/MasterSlider")
+focus_neighbor_bottom = NodePath("../../MasterVolume3/SoundSlider")
 max_value = 1.0
 step = 0.05
 value = 1.0
@@ -178,6 +192,8 @@ horizontal_alignment = 1
 [node name="SoundSlider" type="HSlider" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/MasterVolume3"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_top = NodePath("../../MasterVolume2/MusicSlider")
+focus_neighbor_bottom = NodePath("../../CheckButton")
 max_value = 1.0
 step = 0.05
 value = 1.0
@@ -197,5 +213,7 @@ layout_mode = 2
 
 [connection signal="pressed" from="TabContainer/Menu/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="TabContainer/Menu/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="TabContainer/Menu/MarginContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="TabContainer/Menu/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="toggled" from="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/CheckButton" to="TabContainer/Settings" method="_on_check_button_toggled"]
 [connection signal="pressed" from="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

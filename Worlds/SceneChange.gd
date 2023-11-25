@@ -14,5 +14,9 @@ func _ready():
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
 		if world:
+			var tween = get_tree().create_tween()
+			tween.tween_property(body, "position", self.get_child(0).global_position, 0.1)
+			tween.set_loops()
+			
 			LevelManager.change_scene(world)
 			save_data.floors[unlock_floor] = true
