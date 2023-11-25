@@ -112,7 +112,8 @@ func set_data(new_data = null):
 	if new_data:
 		if sprite:
 			sprite.texture = new_data.texture
-		ammo = 500
+		ammo = new_data.ammo
+		#ammo = 500
 	else:
 		sprite.texture = null
 		ammo = 0
