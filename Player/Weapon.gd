@@ -1,6 +1,5 @@
 extends Node2D
 
-
 @export var data: Gun : set = set_data
 @onready var sprite = $Sprite2D
 

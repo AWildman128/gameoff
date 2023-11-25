@@ -43,17 +43,22 @@ offset_right = 31.5
 offset_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 2
 theme = ExtResource("1_kywr1")
 
-[node name="LevelButton2" type="Button" parent="Levels"]
+[node name="Floor 1" type="Button" parent="Levels"]
 layout_mode = 2
+focus_next = NodePath("../LevelButton")
+focus_previous = NodePath("../LevelButton")
 theme = ExtResource("1_kywr1")
 text = "Floor 1"
 script = ExtResource("1_3ofxv")
 world = ExtResource("5_rsedw")
 
-[node name="LevelButton" type="Button" parent="Levels"]
+[node name="Courtyard" type="Button" parent="Levels"]
 layout_mode = 2
+focus_next = NodePath("../LevelButton2")
+focus_previous = NodePath("../LevelButton2")
 theme = ExtResource("1_kywr1")
 text = "Courtyard"
 script = ExtResource("1_3ofxv")

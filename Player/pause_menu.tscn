@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhxyvp7v0rh3p"]
+[gd_scene load_steps=9 format=3 uid="uid://dhxyvp7v0rh3p"]
 
 [ext_resource type="Script" path="res://Player/pause_menu.gd" id="1_w46or"]
 [ext_resource type="Theme" uid="uid://dgla0g5np2oxc" path="res://Assets/ui_theme.tres" id="2_r0ipo"]
+[ext_resource type="Script" path="res://Player/Resume.gd" id="3_61lex"]
+[ext_resource type="Script" path="res://Player/Settings.gd" id="3_ub6ei"]
+[ext_resource type="FontFile" uid="uid://bsstdhukh8agv" path="res://Assets/Fonts/Scrambled_Eggs_Short_Lowercase.ttf" id="4_00srj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7mdp5"]
+font = ExtResource("4_00srj")
+
+[sub_resource type="LabelSettings" id="LabelSettings_jd5oq"]
+font = ExtResource("4_00srj")
+
+[sub_resource type="LabelSettings" id="LabelSettings_08fd5"]
+font = ExtResource("4_00srj")
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -15,48 +27,175 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+theme = ExtResource("2_r0ipo")
 script = ExtResource("1_w46or")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+tabs_visible = false
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -43.0
-offset_top = -48.0
-offset_right = 43.0
-offset_bottom = 48.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+[node name="Menu" type="Control" parent="TabContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 140
+theme_override_constants/margin_top = 45
+theme_override_constants/margin_right = 140
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Menu/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_r0ipo")
 text = "Paused"
 horizontal_alignment = 1
 
-[node name="Resume" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="Resume" type="Button" parent="TabContainer/Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Settings")
 theme = ExtResource("2_r0ipo")
 text = "Resume"
+script = ExtResource("3_61lex")
 
-[node name="Quit" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="Settings" type="Button" parent="TabContainer/Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Resume")
+focus_neighbor_bottom = NodePath("../Quit")
+theme = ExtResource("2_r0ipo")
+text = "Settings "
+
+[node name="Quit" type="Button" parent="TabContainer/Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_bottom = NodePath("../Resume")
 theme = ExtResource("2_r0ipo")
 text = "Quit"
 
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="Settings" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("3_ub6ei")
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Settings"]
+layout_mode = 2
+offset_left = 20.0
+offset_top = 19.0
+offset_right = 364.0
+offset_bottom = 197.0
+follow_focus = true
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Settings/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Settings/ScrollContainer/MarginContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="MasterVolume" type="VBoxContainer" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/MasterVolume"]
+layout_mode = 2
+text = "Master"
+label_settings = SubResource("LabelSettings_7mdp5")
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/MasterVolume"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+tick_count = 10
+
+[node name="Control" type="Control" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="MasterVolume2" type="VBoxContainer" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/MasterVolume2"]
+layout_mode = 2
+text = "Music"
+label_settings = SubResource("LabelSettings_jd5oq")
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/MasterVolume2"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+tick_count = 10
+
+[node name="Control2" type="Control" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="MasterVolume3" type="VBoxContainer" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/MasterVolume3"]
+layout_mode = 2
+text = "Sound"
+label_settings = SubResource("LabelSettings_08fd5")
+horizontal_alignment = 1
+
+[node name="SoundSlider" type="HSlider" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/MasterVolume3"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+tick_count = 10
+
+[node name="Control3" type="Control" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Test"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="TabContainer/Menu/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="TabContainer/Menu/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="TabContainer/Menu/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
