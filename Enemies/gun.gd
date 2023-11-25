@@ -28,7 +28,7 @@ func shoot(t):
 
 
 func _process(delta):
-	if not data: hide(); $Area2D.monitoring=false; return
+	if not data: self.hide(); $Area2D.monitoring=false; return
 	
 	sprite.texture = data.texture
 	
@@ -76,7 +76,9 @@ func _on_area_2d_body_entered(body):
 	print(body)
 	if body.is_in_group("Player"):
 		body.get_node("Weapon").data = data
-		data = null
+		#self.remove_child(self)
+		data = load("res://Resources/Empty.tres")
+		
 
 
 func spread_vector(vector: Vector2, spread: float):
