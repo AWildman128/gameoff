@@ -1,11 +1,22 @@
 [gd_resource type="Theme" load_steps=10 format=3 uid="uid://dgla0g5np2oxc"]
 
+<<<<<<< Updated upstream
 [ext_resource type="FontFile" uid="uid://cbg3fsoitilu4" path="res://Assets/Fonts/PixelMiddle.ttf" id="1_8mxtm"]
 [ext_resource type="Texture2D" uid="uid://btt2an30cvr5y" path="res://Assets/button_9slice_hover.png" id="2_lne4h"]
 [ext_resource type="Texture2D" uid="uid://c0jdoh1lmp54q" path="res://Assets/button_9slice.png" id="2_vcbrr"]
 [ext_resource type="FontFile" uid="uid://de05t4wtvyfbt" path="res://Assets/Fonts/Whacky_Joe_Monospaced.ttf" id="4_0vomk"]
 [ext_resource type="Texture2D" uid="uid://c3nof0uf6g8db" path="res://Assets/slider.png" id="4_phe3k"]
 [ext_resource type="Texture2D" uid="uid://bmlbc85eput3b" path="res://Assets/slider_tick.png" id="5_jws2c"]
+=======
+[ext_resource type="FontFile" uid="uid://cfwcfuwvuo1i5" path="res://Assets/Fonts/PixelMiddle.ttf" id="1_8mxtm"]
+[ext_resource type="Texture2D" uid="uid://culullv6utrpi" path="res://Assets/button_9slice_hover.png" id="2_lne4h"]
+[ext_resource type="Texture2D" uid="uid://cduepq2nsqlwx" path="res://Assets/button_9slice.png" id="2_vcbrr"]
+[ext_resource type="FontFile" uid="uid://cfsn524hrfka2" path="res://Assets/Fonts/Whacky_Joe_Monospaced.ttf" id="4_0vomk"]
+[ext_resource type="Texture2D" uid="uid://df185eflb336u" path="res://Assets/checked.png" id="4_g8nys"]
+[ext_resource type="Texture2D" uid="uid://b8g6vk7xafh7b" path="res://Assets/slider.png" id="4_phe3k"]
+[ext_resource type="Texture2D" uid="uid://dtek0kvihyajt" path="res://Assets/slider_tick.png" id="5_jws2c"]
+[ext_resource type="Texture2D" uid="uid://bu7c2lvcak8xb" path="res://Assets/unchecked.png" id="5_mgxre"]
+>>>>>>> Stashed changes
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7hgwd"]
 texture = ExtResource("2_vcbrr")

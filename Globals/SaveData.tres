@@ -4,7 +4,15 @@
 
 [resource]
 script = ExtResource("1_cbvdt")
+<<<<<<< Updated upstream
 floors = Array[bool]([true, false, false, false, false, false, false, false])
 master = 0.0
 music = 0.0
 sound = -2.49877
+=======
+floors = Array[bool]([true, true, true, true, true, true, true, true, true, true, true, true])
+fullscreen = false
+master = 0.0
+music = -0.445528
+sound = 0.0
+>>>>>>> Stashed changes
