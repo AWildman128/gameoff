@@ -1,6 +1,7 @@
 extends Node
+class_name PauseComponent
 
-@onready var pause_menu = $"../UI/PauseMenu"
+@export var pause_menu: Control
 
 var paused = false
 

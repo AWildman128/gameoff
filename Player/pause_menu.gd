@@ -7,6 +7,7 @@ extends Control
 func _ready():
 	$TabContainer/Menu/MarginContainer/VBoxContainer/Resume.grab_focus()
 
+
 func _on_resume_pressed():
 	main.pausemenu()
 

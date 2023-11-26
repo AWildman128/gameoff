@@ -9,7 +9,8 @@ class_name SceneChangeComponent
 
 func _ready():
 	self.connect("body_entered", _on_area_2d_body_entered)
-
+	print(self.get_collision_mask_value(1))
+	self.set_collision_mask_value(1, true)
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):

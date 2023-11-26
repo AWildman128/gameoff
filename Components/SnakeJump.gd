@@ -56,9 +56,8 @@ func _physics_process(delta):
 	player.move_and_slide()
 	
 	if grabbing and grab_target:
-		if not grab_target.is_queued_for_deletion():
-			grab_target.monitorable = false
-			player.global_position = grab_target.global_position
+		grab_target.monitorable = false
+		player.global_position = grab_target.global_position
 
 
 func on_area_entered(area):

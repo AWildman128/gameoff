@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhxyvp7v0rh3p"]
+[gd_scene load_steps=8 format=3 uid="uid://dcc5tui3touk2"]
 
 [ext_resource type="Script" path="res://Player/pause_menu.gd" id="1_w46or"]
-[ext_resource type="Theme" uid="uid://dgla0g5np2oxc" path="res://Assets/ui_theme.tres" id="2_r0ipo"]
+[ext_resource type="Theme" uid="uid://h5x3p0ydjmln" path="res://Assets/ui_theme.tres" id="2_r0ipo"]
 [ext_resource type="Script" path="res://Player/Settings.gd" id="3_ub6ei"]
-[ext_resource type="FontFile" uid="uid://bsstdhukh8agv" path="res://Assets/Fonts/Scrambled_Eggs_Short_Lowercase.ttf" id="4_00srj"]
+[ext_resource type="FontFile" uid="uid://c1m2dbux6b86c" path="res://Assets/Fonts/Scrambled_Eggs_Short_Lowercase.ttf" id="4_00srj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7mdp5"]
 font = ExtResource("4_00srj")

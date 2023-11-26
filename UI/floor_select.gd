@@ -16,7 +16,7 @@ func _ready():
 func pressed():
 	print("Entering Level")
 	print(world)
-	self.get_tree().change_scene_to_packed(world)
+	LevelManager.change_scene(world)
 
 
 func set_world(w: PackedScene):

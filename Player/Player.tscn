@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://4syvdymc4y81" path="res://Assets/white_circle.png" id="1_vu111"]
 [ext_resource type="Texture2D" uid="uid://cn34v4xh7onaj" path="res://Assets/Enemies/rifle.png" id="2_4oxgu"]
 [ext_resource type="Script" path="res://Components/SnakeComponent.gd" id="2_5rf68"]
-[ext_resource type="FontFile" uid="uid://cbg3fsoitilu4" path="res://Assets/Fonts/PixelMiddle.ttf" id="2_sru23"]
+[ext_resource type="FontFile" uid="uid://dyff3076rpsoq" path="res://Assets/Fonts/PixelMiddle.ttf" id="2_sru23"]
 [ext_resource type="Script" path="res://Components/SnakeJump.gd" id="3_dylfg"]
-[ext_resource type="PackedScene" uid="uid://dhxyvp7v0rh3p" path="res://Player/pause_menu.tscn" id="3_scga7"]
+[ext_resource type="PackedScene" uid="uid://dcc5tui3touk2" path="res://Player/pause_menu.tscn" id="3_scga7"]
 [ext_resource type="Script" path="res://Components/hurt_box.gd" id="4_cnkcu"]
 [ext_resource type="Script" path="res://Components/health_component.gd" id="5_xepyk"]
 [ext_resource type="Script" path="res://Player/Weapon.gd" id="6_fyk1l"]
@@ -123,9 +123,10 @@ process_callback = 0
 wait_time = 0.1
 one_shot = true
 
-[node name="PauseComponent" type="Node" parent="."]
+[node name="PauseComponent" type="Node" parent="." node_paths=PackedStringArray("pause_menu")]
 process_mode = 3
 script = ExtResource("12_rh7a6")
+pause_menu = NodePath("../UI/PauseMenu")
 
 [node name="Weapon" type="Node2D" parent="."]
 script = ExtResource("6_fyk1l")

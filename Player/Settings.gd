@@ -12,7 +12,7 @@ func _ready():
 	music_slider.value = db_to_linear(save_data.music)
 	sound_slider.value = db_to_linear(save_data.sound)
 	$ScrollContainer/MarginContainer/VBoxContainer/CheckButton.grab_focus()
-
+	$ScrollContainer/MarginContainer/VBoxContainer/CheckButton.button_pressed = save_data.fullscreen
 
 func _process(delta):
 	save_data.master = linear_to_db(master_slider.value)
@@ -25,4 +25,4 @@ func _on_check_button_toggled(button_pressed):
 	if not button_pressed:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
