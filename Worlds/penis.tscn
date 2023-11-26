@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://chdt0nq7huofp"]
+
+[ext_resource type="TileSet" uid="uid://dk01xxg1m6gp7" path="res://LevelEditor/level_editor.tres" id="1_no5pf"]
+[ext_resource type="Script" path="res://LevelEditor/LevelEditor.gd" id="2_rjoom"]
+[ext_resource type="PackedScene" uid="uid://clddbg7onlucs" path="res://Player/Player.tscn" id="3_ut6q6"]
+[ext_resource type="PackedScene" uid="uid://bptq07qw4byd2" path="res://Resources/weapon_kiosk.tscn" id="4_x51m2"]
+
+[node name="penis" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -862.0
+offset_top = -740.0
+offset_right = 1197.0
+offset_bottom = 715.0
+color = Color(0, 0, 0, 1)
+
+[node name="LevelEditor" type="TileMap" parent="."]
+tile_set = ExtResource("1_no5pf")
+format = 2
+layer_0/name = "Level"
+script = ExtResource("2_rjoom")
+
+[node name="Snake" parent="." instance=ExtResource("3_ut6q6")]
+
+[node name="WeaponKiosk" parent="." instance=ExtResource("4_x51m2")]
+position = Vector2(39, 0)

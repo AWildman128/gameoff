@@ -19,30 +19,38 @@ func _ready():
 	if current_states:
 		for state in current_states:
 			state.enter()
+			state.enter_children()
 
 
 func _process(delta):
 	if current_states:
+		#print(current_states)
 		for state in current_states:
 			state.update(delta)
+			state.update_children(delta)
 
 
 func _physics_process(delta):
 	if current_states:
 		for state in current_states:
 			state.physics_update(delta)
+			state.physics_update_children(delta)
 
 
-func on_child_transitioned(state: State, new_state_name: String, replace_state: String = ''):
+func on_child_transitioned(state: State, new_state_name: String, replace: bool = true):
 	if state not in current_states:
 		return
+	elif state in current_states and replace:
+		state.exit()
+		state.exit_children()
+		print(state.name + " exited")
+		current_states.erase(state)
 	
 	var new_state = states.get(new_state_name.to_lower())
 	if !new_state:
 		return
 	
-	if replace_state.to_lower() in current_states:
-		current_states[current_states.find(replace_state.to_lower())].exit()
-	
+	print(new_state.name + " entered")
 	new_state.enter()
+	new_state.enter_children()
 	current_states.append(new_state)

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Gun" load_steps=3 format=3 uid="uid://dap4m8j6q60tm"]
+
+[ext_resource type="Script" path="res://Resources/gun.gd" id="1_7xcs6"]
+[ext_resource type="Texture2D" uid="uid://cyvtj1y7mhco2" path="res://Assets/Enemies/shotgun.png" id="2_o227e"]
+
+[resource]
+script = ExtResource("1_7xcs6")
+texture = ExtResource("2_o227e")
+full_auto = true
+bullets = 6
+rpm = 60.0
+spread = 1.0
+recoil = 5.0
+life_time = 0.5
+ammo = 4
+burst = 1

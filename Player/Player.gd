@@ -1,5 +1,7 @@
-extends CharacterBody3D
-
-@onready var camera = $Camera3D
+extends CharacterBody2D
 
 
+func _ready():
+	$CanvasLayer/Control/ColorRect.show()
+	$UI/TextureRect.show()
+	$UI/TextureRect/Label.show()
