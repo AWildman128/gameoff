@@ -20,7 +20,7 @@ func _ready():
 	MusicManager.play_song(MusicManager.GAME)
 
 	$ScrollContainer/MarginContainer/Levels/Courtyard.grab_focus()
-
+	$ScrollContainer.scroll_vertical = 100
 
 #func _input(event):
 #	if Input.is_action_just_pressed("pause"):

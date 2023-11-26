@@ -11,6 +11,9 @@ extends Node2D
 
 @onready var texture_rect = $"../UI/TextureRect"
 @onready var label = $"../UI/TextureRect/Label"
+@onready var camera: Camera2DPlus = $"../Camera2D"
+
+@onready var tween = get_tree().create_tween()
 
 var ammo = 0
 
@@ -67,6 +70,8 @@ func shoot():
 	elif InputManager.input_type == InputManager.KBM:
 		direction = get_global_mouse_position() - self.global_position
 	direction = -direction.normalized()
+	
+	camera.set_shake(data.recoil)
 	
 	print(data.rpm)
 	print(60/data.rpm)

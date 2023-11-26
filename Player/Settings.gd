@@ -24,5 +24,7 @@ func _process(delta):
 func _on_check_button_toggled(button_pressed):
 	if not button_pressed:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		save_data.fullscreen = false
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		save_data.fullscreen = true

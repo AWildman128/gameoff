@@ -1,0 +1,9 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+	<title>camera_2d_plus_icon</title>
+	<defs>
+		<image  width="16" height="16" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAAXNSR0IB2cksfwAAAFFQTFRFAAAAkrb/jqXzjaXzjaX0jaXzwMD/jabzjaXzjqb0mbP/jqX0jaXzjaXzjaX0jaXzjaX0jaXzjqb0jaXzkqrzjqbzmcz/jqXzjaXzjaXzjaXzkmIrhAAAABt0Uk5TAAeO6euLBI//iQqZ8/Ds55z2h/IVkgWKerX1FD2AOgAAAFxJREFUeJxdzUkWgCAMA1CcAEecRe9/UK0tgUdW8EmpUpSirOpGqxhjv7R87vphNBOBY5htiMACWBk2gN5/OACy4Lzk7rEThVDCe4Bb7j4dw6DN4Uk62UjyaQTqv9R7BP64YHJDAAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+	</style>
+	<use id="Background" href="#img1" x="0" y="0"/>
+</svg>

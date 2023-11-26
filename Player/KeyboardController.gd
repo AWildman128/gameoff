@@ -21,7 +21,6 @@ func _physics_process(delta):
 		direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 
 	direction = direction.normalized()
-	print(direction)
 	
 	if abs(direction.x) >= 0.5 and player.is_on_floor_only():
 		# Update the time variable based on delta time

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://ts8ci2yibd50"]
+
+[ext_resource type="Script" path="res://addons/camera_2d_plus/objects/camera_2d_plus/camera_2d_plus_script.gd" id="1_lentq"]
+[ext_resource type="Script" path="res://addons/camera_2d_plus/objects/test_scene/test_scene_script.gd" id="1_rdbk4"]
+[ext_resource type="Texture2D" uid="uid://bt5v4tumrjmkh" path="res://addons/camera_2d_plus/images/plugin_icon/plugin_icon.png" id="2_p21u5"]
+
+[node name="TestScene" type="Node2D"]
+script = ExtResource("1_rdbk4")
+
+[node name="Camera2DPlus" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+ignore_rotation = false
+position_smoothing_speed = 1.0
+script = ExtResource("1_lentq")
+NODE_TO_FOLLOW_PATH = NodePath("../Marker2D")
+FOLLOW_OFFSET = Vector2(640, 360)
+SHAKE_DECAY = 0.05
+
+[node name="PluginIcon" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_p21u5")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="PluginIcon" type="Sprite2D" parent="Marker2D"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_p21u5")

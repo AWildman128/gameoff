@@ -40,5 +40,4 @@ func play_song(song: int):
 	music_player.play()
 
 
-func _exit_tree():
-	ResourceSaver.save(save_data, "res://Globals/SaveData.tres")
+

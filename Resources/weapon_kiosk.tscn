@@ -18,7 +18,7 @@ region_enabled = true
 region_rect = Rect2(48, 128, 16, 16)
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
-position = Vector2(0, -4.27879)
+position = Vector2(0, -5.40682)
 texture = ExtResource("4_ivjrq")
 
 [node name="HurtboxComponent" type="Area2D" parent="."]

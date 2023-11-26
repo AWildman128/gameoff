@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://clddbg7onlucs"]
+[gd_scene load_steps=22 format=3 uid="uid://clddbg7onlucs"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_i1s45"]
 [ext_resource type="Texture2D" uid="uid://4syvdymc4y81" path="res://Assets/white_circle.png" id="1_vu111"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Components/SnakeComponent.gd" id="2_5rf68"]
 [ext_resource type="FontFile" uid="uid://dyff3076rpsoq" path="res://Assets/Fonts/PixelMiddle.ttf" id="2_sru23"]
 [ext_resource type="Script" path="res://Components/SnakeJump.gd" id="3_dylfg"]
+[ext_resource type="Script" path="res://addons/camera_2d_plus/objects/camera_2d_plus/camera_2d_plus_script.gd" id="3_f5fc1"]
 [ext_resource type="PackedScene" uid="uid://dcc5tui3touk2" path="res://Player/pause_menu.tscn" id="3_scga7"]
 [ext_resource type="Script" path="res://Components/hurt_box.gd" id="4_cnkcu"]
 [ext_resource type="Script" path="res://Components/health_component.gd" id="5_xepyk"]
@@ -78,6 +79,8 @@ shape = SubResource("RectangleShape2D_dffg6")
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
+script = ExtResource("3_f5fc1")
+SHAKE_DECAY = 0.05
 
 [node name="GrabArea" type="Area2D" parent="."]
 collision_layer = 2

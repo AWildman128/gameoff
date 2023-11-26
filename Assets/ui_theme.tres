@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://h5x3p0ydjmln"]
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://h5x3p0ydjmln"]
 
 [ext_resource type="FontFile" uid="uid://dyff3076rpsoq" path="res://Assets/Fonts/PixelMiddle.ttf" id="1_8mxtm"]
 [ext_resource type="Texture2D" uid="uid://cn8icaxef3bo0" path="res://Assets/button_9slice_hover.png" id="2_lne4h"]
@@ -26,6 +26,18 @@ texture_margin_bottom = 3.0
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_5au62"]
 color = Color(1, 1, 1, 1)
 thickness = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ceanl"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hom7s"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ux1hj"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_genrs"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pkglx"]
 texture = ExtResource("2_vcbrr")
@@ -59,6 +71,10 @@ HSlider/styles/grabber_area = null
 HSlider/styles/grabber_area_highlight = null
 HSlider/styles/slider = SubResource("StyleBoxLine_5au62")
 Label/fonts/font = ExtResource("4_0vomk")
+Panel/styles/panel = SubResource("StyleBoxFlat_ceanl")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_hom7s")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_ux1hj")
+TabContainer/styles/panel = SubResource("StyleBoxFlat_genrs")
 VScrollBar/styles/grabber = SubResource("StyleBoxTexture_pkglx")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_plbi3")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_pkglx")
