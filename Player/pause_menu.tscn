@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhxyvp7v0rh3p"]
+[gd_scene load_steps=9 format=3 uid="uid://dcc5tui3touk2"]
 
 [ext_resource type="Script" path="res://Player/pause_menu.gd" id="1_w46or"]
-[ext_resource type="Theme" uid="uid://dgla0g5np2oxc" path="res://Assets/ui_theme.tres" id="2_r0ipo"]
+[ext_resource type="Theme" uid="uid://h5x3p0ydjmln" path="res://Assets/ui_theme.tres" id="2_r0ipo"]
 [ext_resource type="Script" path="res://Player/Settings.gd" id="3_ub6ei"]
-[ext_resource type="FontFile" uid="uid://c3357d2eft5f0" path="res://Assets/Fonts/Scrambled_Eggs_Short_Lowercase.ttf" id="4_00srj"]
+[ext_resource type="FontFile" uid="uid://c1m2dbux6b86c" path="res://Assets/Fonts/Scrambled_Eggs_Short_Lowercase.ttf" id="4_00srj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ny71p"]
 bg_color = Color(0, 0, 0, 0.498039)
@@ -74,20 +74,20 @@ text = "Resume"
 [node name="Settings" type="Button" parent="TabContainer/Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Resume")
-focus_neighbor_bottom = NodePath("../MainMenu")
+focus_neighbor_bottom = NodePath("../Quit")
 theme = ExtResource("2_r0ipo")
 text = "Settings "
 
 [node name="MainMenu" type="Button" parent="TabContainer/Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_top = NodePath("../Resume")
 focus_neighbor_bottom = NodePath("../Quit")
 theme = ExtResource("2_r0ipo")
 text = "Main Menu "
 
 [node name="Quit" type="Button" parent="TabContainer/Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../MainMenu")
+focus_neighbor_top = NodePath("../Settings")
 focus_neighbor_bottom = NodePath("../Resume")
 theme = ExtResource("2_r0ipo")
 text = "Quit"

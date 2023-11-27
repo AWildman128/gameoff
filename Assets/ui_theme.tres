@@ -1,13 +1,13 @@
-[gd_resource type="Theme" load_steps=18 format=3 uid="uid://dgla0g5np2oxc"]
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://h5x3p0ydjmln"]
 
-[ext_resource type="FontFile" uid="uid://bqu27wg51ygh8" path="res://Assets/Fonts/PixelMiddle.ttf" id="1_8mxtm"]
-[ext_resource type="Texture2D" uid="uid://crcmvaimwxkdg" path="res://Assets/button_9slice_hover.png" id="2_lne4h"]
-[ext_resource type="Texture2D" uid="uid://b0yseomx6yyy7" path="res://Assets/button_9slice.png" id="2_vcbrr"]
-[ext_resource type="FontFile" uid="uid://b63dnwnoiuy7f" path="res://Assets/Fonts/Whacky_Joe_Monospaced.ttf" id="4_0vomk"]
-[ext_resource type="Texture2D" uid="uid://buctym8c18wl2" path="res://Assets/checked.png" id="4_g8nys"]
-[ext_resource type="Texture2D" uid="uid://ng30u6aswhl1" path="res://Assets/slider.png" id="4_phe3k"]
-[ext_resource type="Texture2D" uid="uid://xcp8u5mpjatx" path="res://Assets/slider_tick.png" id="5_jws2c"]
-[ext_resource type="Texture2D" uid="uid://dts7k7gj1wo32" path="res://Assets/unchecked.png" id="5_mgxre"]
+[ext_resource type="FontFile" uid="uid://dyff3076rpsoq" path="res://Assets/Fonts/PixelMiddle.ttf" id="1_8mxtm"]
+[ext_resource type="Texture2D" uid="uid://cn8icaxef3bo0" path="res://Assets/button_9slice_hover.png" id="2_lne4h"]
+[ext_resource type="Texture2D" uid="uid://bgxfgn54a0fmq" path="res://Assets/button_9slice.png" id="2_vcbrr"]
+[ext_resource type="FontFile" uid="uid://ck8qjk58xhs3r" path="res://Assets/Fonts/Whacky_Joe_Monospaced.ttf" id="4_0vomk"]
+[ext_resource type="Texture2D" uid="uid://cfakhd0boruma" path="res://Assets/checked.png" id="4_g8nys"]
+[ext_resource type="Texture2D" uid="uid://d28ha1t7ctskf" path="res://Assets/slider.png" id="4_phe3k"]
+[ext_resource type="Texture2D" uid="uid://cbeue2k7glpvy" path="res://Assets/slider_tick.png" id="5_jws2c"]
+[ext_resource type="Texture2D" uid="uid://bnokerpnhpu2u" path="res://Assets/unchecked.png" id="5_mgxre"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7hgwd"]
 texture = ExtResource("2_vcbrr")

@@ -18,15 +18,21 @@ var points: Array[Vector2]		# Saves previous positions
 var line = Line2D.new()
 var outline = Line2D.new()
 
+var gradient = Gradient.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	gradient.add_point(0, Color(Color.RED))
+	gradient.add_point(1, Color(Color.GREEN))
+	
 	# Creates the line used for the body
 	line.width_curve = taper
 	line.joint_mode = Line2D.LINE_JOINT_ROUND
 	line.begin_cap_mode = Line2D.LINE_CAP_ROUND
 	line.end_cap_mode = Line2D.LINE_CAP_ROUND
 	line.width = 5
+	
+	#line.gradient = gradient
 	
 	outline.width_curve = taper
 	outline.joint_mode = Line2D.LINE_JOINT_ROUND
@@ -64,7 +70,7 @@ func _physics_process(delta):
 	
 	# Sets segment object positions
 	for i in range(segments):
-		bodies[i].global_position = points[i * (spacing*bodies[i].scale.x)]  # Sets global position, offset by spacing
+		bodies[i].global_position = points[i * spacing]  # Sets global position, offset by spacing
 		bodies[i].position.x += curve.sample_baked(float(i)/float(segments)) * magnitude  # Skews segments along x axis
 		line.set_point_position(i,bodies[i].global_position)
 		outline.set_point_position(i,bodies[i].global_position)
