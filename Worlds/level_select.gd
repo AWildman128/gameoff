@@ -8,7 +8,6 @@ extends Control
 @onready var save_data: SaveData = preload("res://Globals/SaveData.tres")
 @onready var lock: Texture = preload("res://Assets/lock.png")
 @onready var pause_menu = $PauseMenu
-@onready var courtyard = $ScrollContainer/MarginContainer/Levels/Courtyard
 
 
 # Called when the node enters the scene tree for the first time.

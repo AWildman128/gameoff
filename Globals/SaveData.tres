@@ -6,6 +6,6 @@
 script = ExtResource("1_cbvdt")
 floors = Array[bool]([true, true, true, true, true, true, true, true, true, true, false])
 fullscreen = false
-master = -1.9382
-music = 0.0
-sound = -3.74173
+master = -6.93575
+music = -2.49877
+sound = -6.0206

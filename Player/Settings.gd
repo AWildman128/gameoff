@@ -1,5 +1,6 @@
 extends Control
 
+@onready var tab = $".."
 @onready var master_slider = %MasterSlider
 @onready var music_slider = %MusicSlider
 @onready var sound_slider = %SoundSlider
@@ -28,3 +29,8 @@ func _on_check_button_toggled(button_pressed):
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		save_data.fullscreen = true
+
+
+func _on_back_pressed():
+	tab.current_tab = 0
+	$"../..".focus()

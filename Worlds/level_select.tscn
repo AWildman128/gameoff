@@ -35,9 +35,9 @@ script = ExtResource("1_m7vk5")
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 11.8885
+offset_top = 17.3781
 offset_right = 102.0
-offset_bottom = 61.8888
+offset_bottom = 67.3845
 text = "Level
 Select"
 label_settings = SubResource("LabelSettings_vf3rg")
@@ -133,8 +133,6 @@ world = ExtResource("14_8244f")
 
 [node name="Floor 1" type="Button" parent="ScrollContainer/MarginContainer/Levels"]
 layout_mode = 2
-focus_next = NodePath("../LevelButton")
-focus_previous = NodePath("../LevelButton")
 theme = ExtResource("1_kywr1")
 text = "Floor 1"
 script = ExtResource("1_3ofxv")
@@ -162,7 +160,7 @@ texture = ExtResource("1_723nh")
 stretch_mode = 1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_offset = Vector2(30753.4, 30753.4)
+motion_offset = Vector2(200020, 200020)
 motion_mirroring = Vector2(384, 224)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
