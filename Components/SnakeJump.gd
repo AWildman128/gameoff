@@ -8,11 +8,14 @@ class_name SnakeJumpComponent
 @export var health_component: HealthComponent
 @onready var weapon = $"../Weapon"
 @onready var buffer_jump_timer = $BufferJumpTimer
+@onready var sound_component: SoundComponent = $"../SoundComponent"
+
 
 var grabbing:bool = false
 var grab_target: HurtboxComponent
 var wall_jumps:int = 1
 var buffer_jump:bool = false
+var just_landed = false
 
 const WALK_SPEED:int = 15
 const SPEED_CAP:float = 400
@@ -33,7 +36,10 @@ func _physics_process(delta):
 		player.velocity.x = -player.get_wall_normal().x
 	else:
 		player.velocity.x = lerp(player.velocity.x, 0.0, 0.2)  # Floor friction
-
+		
+	#if is_just_landed():
+	#	sound_component.play("Land")
+		
 	if not health_component.is_alive(): return
 	
 	if Input.is_action_just_pressed("jump") and (player.is_on_floor() or grabbing or (player.is_on_wall() and wall_jumps > 0)):
@@ -76,7 +82,10 @@ func jump():
 		direction = player.global_position.direction_to(player.get_global_mouse_position())
 		
 	direction = direction.normalized()
-
+	if player.is_on_wall():
+		sound_component.play("Jump")
+	else:
+		sound_component.play('Land')
 	
 	if not player.is_on_wall_only():
 		player.velocity = direction * strength * 60  # Launches snake towards direction of cursor
@@ -97,7 +106,14 @@ func jump():
 		grab_target = null
 
 
-
+func is_just_landed():
+	#print(just_landed)
+	if player.is_on_floor() and not just_landed:
+		just_landed = true
+		return true
+	elif not player.is_on_floor():
+		just_landed = false
+		return false
 
 
 

@@ -35,9 +35,9 @@ script = ExtResource("1_m7vk5")
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 20.9293
+offset_top = 11.7187
 offset_right = 102.0
-offset_bottom = 70.9304
+offset_bottom = 61.7194
 text = "Level
 Select"
 label_settings = SubResource("LabelSettings_vf3rg")

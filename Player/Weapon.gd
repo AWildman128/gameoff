@@ -12,6 +12,7 @@ extends Node2D
 @onready var texture_rect = $"../UI/TextureRect"
 @onready var label = $"../UI/TextureRect/Label"
 @onready var camera: Camera2DPlus = $"../Camera2D"
+@onready var sound_component = $"../SoundComponent"
 
 @onready var tween = get_tree().create_tween()
 
@@ -73,11 +74,9 @@ func shoot():
 	
 	camera.set_shake(data.recoil)
 	
-	print(data.rpm)
-	print(60/data.rpm)
+	
 	rpm_timer.stop()
 	rpm_timer.start(60/data.rpm)
-	print(rpm_timer.time_left)
 	
 	for i in range(data.bullets):
 		var new_bullet = bullet.instantiate()
@@ -87,6 +86,7 @@ func shoot():
 		new_bullet.velocity += self.get_parent().velocity
 		new_bullet.direction = spread_vector(direction, data.spread)
 		muzzle.add_child(new_bullet)
+		sound_component.play("Gunshot")
 	
 	var new_flash = muzzle_flash.instantiate()
 	new_flash.position.x += 10

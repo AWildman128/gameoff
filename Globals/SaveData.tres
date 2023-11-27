@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SaveData" load_steps=2 format=3 uid="uid://cmmshfxtk4p78"]
+[gd_resource type="Resource" script_class="SaveData" load_steps=2 format=3]
 
 [ext_resource type="Script" path="res://Globals/save_data.gd" id="1_cbvdt"]
 
@@ -8,4 +8,4 @@ floors = Array[bool]([true, true, true, true, true, true, true, true, true, true
 fullscreen = false
 master = -1.9382
 music = 0.0
-sound = 0.0
+sound = -3.74173
