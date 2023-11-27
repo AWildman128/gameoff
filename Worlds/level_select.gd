@@ -8,10 +8,12 @@ extends Control
 @onready var save_data: SaveData = preload("res://Globals/SaveData.tres")
 @onready var lock: Texture = preload("res://Assets/lock.png")
 @onready var pause_menu = $PauseMenu
+@onready var courtyard = $ScrollContainer/MarginContainer/Levels/Courtyard
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
 	var tween = get_tree().create_tween()
 	tween.tween_property(label, "position", Vector2(24,16+5), 1).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(label, "position", Vector2(24,16-5), 1).set_trans(Tween.TRANS_SINE)
