@@ -21,8 +21,10 @@ var target : CharacterBody2D
 signal finished_shooting
 
 
-func shoot(t):
+func shoot(t = null):
+	if not t: target = null; return
 	if not data: return
+	
 	timer.start()
 	target = t
 
@@ -31,6 +33,10 @@ func _process(delta):
 	if not data: self.hide(); $Area2D.monitoring=false; return
 	
 	sprite.texture = data.texture
+	
+	if not target:
+		line.visible = false
+		return
 	
 	if timer.time_left > 0:
 		if target != null:
@@ -43,15 +49,16 @@ func _process(delta):
 
 func _on_timer_timeout():
 	if not data: return
+	line.visible = false
 	for i in range(data.burst):
 		fire()
 		await get_tree().create_timer(60/data.rpm).timeout
 	await get_tree().create_timer((60/data.rpm)*shots).timeout
 	finished_shooting.emit()
+	line.visible = true
 
 
 func fire():
-	#$Sprite2D. visible = true
 	await get_tree().create_timer(shot_time).timeout
 	#var hit = ray.get_collider()
 	#$Sprite2D. visible = false

@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dimrvv16o162a"]
+[gd_scene load_steps=13 format=3 uid="uid://dimrvv16o162a"]
 
 [ext_resource type="Script" path="res://Entities/Bullet.gd" id="1_dqpg5"]
 [ext_resource type="Texture2D" uid="uid://4syvdymc4y81" path="res://Assets/white_circle.png" id="2_gturb"]
 [ext_resource type="Script" path="res://Components/SnakeComponent.gd" id="3_lep1b"]
+[ext_resource type="Script" path="res://Components/SoundComponent.gd" id="4_t852a"]
+[ext_resource type="Script" path="res://Components/SoundData.gd" id="5_eicgw"]
+[ext_resource type="AudioStream" uid="uid://frm84bflw2ab" path="res://Assets/Sounds/gunshot.wav" id="6_ihptp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0k6o4"]
 radius = 4.0
@@ -18,6 +21,11 @@ point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0uesb"]
 size = Vector2(0, 2)
+
+[sub_resource type="Resource" id="Resource_n7mbx"]
+script = ExtResource("5_eicgw")
+name = "Gunshot"
+sound = ExtResource("6_ihptp")
 
 [node name="Bullet" type="CharacterBody2D"]
 collision_layer = 8
@@ -54,6 +62,10 @@ curve = SubResource("Curve_ue5s3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 0
 shape = SubResource("RectangleShape2D_0uesb")
+
+[node name="SoundComponent" type="Node2D" parent="."]
+script = ExtResource("4_t852a")
+sounds = Array[ExtResource("5_eicgw")]([SubResource("Resource_n7mbx")])
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

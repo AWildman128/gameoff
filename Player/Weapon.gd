@@ -74,7 +74,6 @@ func shoot():
 	
 	camera.set_shake(data.recoil)
 	
-	
 	rpm_timer.stop()
 	rpm_timer.start(60/data.rpm)
 	
@@ -86,7 +85,6 @@ func shoot():
 		new_bullet.velocity += self.get_parent().velocity
 		new_bullet.direction = spread_vector(direction, data.spread)
 		muzzle.add_child(new_bullet)
-		sound_component.play("Gunshot")
 	
 	var new_flash = muzzle_flash.instantiate()
 	new_flash.position.x += 10

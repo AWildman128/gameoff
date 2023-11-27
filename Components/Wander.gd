@@ -23,8 +23,6 @@ func enter():
 	
 	if not animation_player: animation_player = AnimationPlayer.new()
 	animation_player.play("RESET")
-	
-	
 
 
 func update(delta):
@@ -38,8 +36,6 @@ func update(delta):
 			#print(direction.length())
 			if attack_state:
 				transition.emit(self, attack_state.name)
-	
-
 
 
 func physics_update(delta):

@@ -23,6 +23,8 @@ func shoot():
 	var direction = player.global_position - enemy.global_position
 	
 	if direction.length() > detection_distance:
+		shooting = false
+		weapon.shoot()
 		transition.emit(self, wander.name)
 		return
 	

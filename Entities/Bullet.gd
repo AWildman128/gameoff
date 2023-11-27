@@ -9,8 +9,10 @@ var direction = Vector2.LEFT
 var life_time: float = 1
 var hit_something = false
 
+
 func _ready():
 	velocity = -direction * 400
+	$SoundComponent.play("Gunshot")
 	var tween = get_tree().create_tween()
 	tween.tween_property(sprite_2d, "modulate", Color(1,1,1,0), life_time).set_ease(Tween.EASE_OUT)
 	

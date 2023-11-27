@@ -58,7 +58,7 @@ script = ExtResource("6_cgcie")
 enemy = NodePath("../..")
 wander = NodePath("../EnemyWander")
 weapon = NodePath("../../Gun")
-detection_distance = 300
+detection_distance = 200
 
 [node name="EnemyWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "attack_state")]
 script = ExtResource("7_peonx")

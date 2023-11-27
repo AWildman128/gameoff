@@ -14,7 +14,7 @@ func _ready():
 
 func play(sound: String):
 	print("Playing sound " + sound)
-	var new_sound_player = AudioStreamPlayer.new()
+	var new_sound_player = AudioStreamPlayer2D.new()
 	new_sound_player.stream = sound_list[sound]
 	new_sound_player.bus = "Sound"
 	new_sound_player.pitch_scale = randf_range(0.9,1)

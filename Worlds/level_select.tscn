@@ -35,9 +35,9 @@ script = ExtResource("1_m7vk5")
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 11.7187
+offset_top = 13.3965
 offset_right = 102.0
-offset_bottom = 61.7194
+offset_bottom = 63.3983
 text = "Level
 Select"
 label_settings = SubResource("LabelSettings_vf3rg")
@@ -162,7 +162,7 @@ texture = ExtResource("1_723nh")
 stretch_mode = 1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_offset = Vector2(28460.8, 28460.8)
+motion_offset = Vector2(28966.6, 28966.6)
 motion_mirroring = Vector2(384, 224)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
