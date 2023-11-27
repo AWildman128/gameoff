@@ -33,7 +33,7 @@ func _on_button_pressed():
 func _on_main_menu_pressed():
 	self.hide()
 	get_tree().paused = false
-	LevelManager.change_scene(load("res://Worlds/level_select.tscn"))
+	LevelManager.change_scene(load("res://Worlds/main_menu.tscn"))
 
 func focus():
 	resume.grab_focus()

@@ -1,23 +1,23 @@
-[gd_scene load_steps=20 format=3 uid="uid://diq62pw8lp4hi"]
+[gd_scene load_steps=20 format=3 uid="uid://3ga4bk3l6ppa"]
 
 [ext_resource type="Script" path="res://UI/floor_select.gd" id="1_3ofxv"]
-[ext_resource type="Texture2D" uid="uid://kegb8qa5poo6" path="res://Assets/level_select_background.png" id="1_723nh"]
-[ext_resource type="Theme" uid="uid://h5x3p0ydjmln" path="res://Assets/ui_theme.tres" id="1_kywr1"]
+[ext_resource type="Texture2D" uid="uid://c72nk8fgg87dq" path="res://Assets/level_select_background.png" id="1_723nh"]
+[ext_resource type="Theme" uid="uid://dgla0g5np2oxc" path="res://Assets/ui_theme.tres" id="1_kywr1"]
 [ext_resource type="Script" path="res://Worlds/level_select.gd" id="1_m7vk5"]
-[ext_resource type="FontFile" uid="uid://ck8qjk58xhs3r" path="res://Assets/Fonts/Whacky_Joe_Monospaced.ttf" id="2_6i0tn"]
-[ext_resource type="Texture2D" uid="uid://l64utxtsrkef" path="res://Assets/lock.png" id="4_cwqus"]
-[ext_resource type="PackedScene" uid="uid://0434gef1k40g" path="res://Worlds/floor_10.tscn" id="5_ndy0c"]
+[ext_resource type="FontFile" uid="uid://b63dnwnoiuy7f" path="res://Assets/Fonts/Whacky_Joe_Monospaced.ttf" id="2_6i0tn"]
+[ext_resource type="Texture2D" uid="uid://cn3sclg8twu3g" path="res://Assets/lock.png" id="4_cwqus"]
+[ext_resource type="PackedScene" uid="uid://dr8ef8h8u5fb4" path="res://Worlds/floor_10.tscn" id="5_ndy0c"]
 [ext_resource type="PackedScene" uid="uid://b4j637y60hnu2" path="res://Worlds/floor_1.tscn" id="5_rsedw"]
-[ext_resource type="PackedScene" uid="uid://bpu5ctuqwjsxm" path="res://Worlds/floor_9.tscn" id="6_2xs4j"]
+[ext_resource type="PackedScene" uid="uid://wd4y1e4g5dhh" path="res://Worlds/floor_9.tscn" id="6_2xs4j"]
 [ext_resource type="PackedScene" uid="uid://cp2jtb447c6o6" path="res://Worlds/courtyard.tscn" id="6_q4y4d"]
-[ext_resource type="PackedScene" uid="uid://c8nal5llwb27m" path="res://Worlds/floor_8.tscn" id="7_ranuj"]
-[ext_resource type="PackedScene" uid="uid://cnuugsnvplsrs" path="res://Worlds/floor_7.tscn" id="9_p0y3l"]
-[ext_resource type="PackedScene" uid="uid://bew85o04qav10" path="res://Worlds/floor_6.tscn" id="10_r4eke"]
+[ext_resource type="PackedScene" uid="uid://bkmfnfvwq4m61" path="res://Worlds/floor_8.tscn" id="7_ranuj"]
+[ext_resource type="PackedScene" uid="uid://dp5y5lqawyohk" path="res://Worlds/floor_7.tscn" id="9_p0y3l"]
+[ext_resource type="PackedScene" uid="uid://blvdfcumfrf" path="res://Worlds/floor_6.tscn" id="10_r4eke"]
 [ext_resource type="PackedScene" uid="uid://c0ca0nuqniajd" path="res://Worlds/floor_5.tscn" id="11_qc51t"]
 [ext_resource type="PackedScene" uid="uid://jefwdot1yon6" path="res://Worlds/floor_4.tscn" id="12_qd2ut"]
 [ext_resource type="PackedScene" uid="uid://tbfu3odjm2wh" path="res://Worlds/floor_3.tscn" id="13_g8rod"]
 [ext_resource type="PackedScene" uid="uid://cu50snr5qaog1" path="res://Worlds/floor_2.tscn" id="14_8244f"]
-[ext_resource type="PackedScene" uid="uid://dcc5tui3touk2" path="res://Player/pause_menu.tscn" id="18_ttnta"]
+[ext_resource type="PackedScene" uid="uid://dhxyvp7v0rh3p" path="res://Player/pause_menu.tscn" id="18_ttnta"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vf3rg"]
 font = ExtResource("2_6i0tn")
@@ -35,9 +35,9 @@ script = ExtResource("1_m7vk5")
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 16.9111
+offset_top = 17.3781
 offset_right = 102.0
-offset_bottom = 66.9136
+offset_bottom = 67.3845
 text = "Level
 Select"
 label_settings = SubResource("LabelSettings_vf3rg")
@@ -133,8 +133,6 @@ world = ExtResource("14_8244f")
 
 [node name="Floor 1" type="Button" parent="ScrollContainer/MarginContainer/Levels"]
 layout_mode = 2
-focus_next = NodePath("../LevelButton")
-focus_previous = NodePath("../LevelButton")
 theme = ExtResource("1_kywr1")
 text = "Floor 1"
 script = ExtResource("1_3ofxv")
@@ -162,7 +160,7 @@ texture = ExtResource("1_723nh")
 stretch_mode = 1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_offset = Vector2(28966.6, 28966.6)
+motion_offset = Vector2(200020, 200020)
 motion_mirroring = Vector2(384, 224)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
