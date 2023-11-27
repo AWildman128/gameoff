@@ -3,6 +3,7 @@ extends Control
 
 @onready var main = $"../../PauseComponent"
 @onready var tab_container = $TabContainer
+@onready var resume = $TabContainer/Menu/MarginContainer/VBoxContainer/Resume
 
 func _ready():
 	$TabContainer/Menu/MarginContainer/VBoxContainer/Resume.grab_focus()
@@ -33,3 +34,6 @@ func _on_main_menu_pressed():
 	self.hide()
 	get_tree().paused = false
 	LevelManager.change_scene(load("res://Worlds/level_select.tscn"))
+
+func focus():
+	resume.grab_focus()

@@ -16,6 +16,7 @@ func pausemenu():
 		get_tree().paused = !paused
 	else:
 		pause_menu.show()
+		pause_menu.focus()
 		get_tree().paused = !paused
 		
 	paused = !paused
