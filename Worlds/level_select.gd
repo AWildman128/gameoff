@@ -21,12 +21,11 @@ func _ready():
 	MusicManager.play_song(MusicManager.GAME)
 
 	$ScrollContainer/MarginContainer/Levels/Courtyard.grab_focus()
-	$ScrollContainer.scroll_vertical = 100
+	$ScrollContainer.scroll_vertical = 200
 
-#func _input(event):
-#	if Input.is_action_just_pressed("pause"):
-#		pause_menu.tab_container = 1
-#		pause_menu.show()
+func _input(event):
+	if Input.is_action_just_pressed("pause"):
+		LevelManager.change_scene(load("res://Worlds/main_menu.tscn"))
 
 
 func _process(delta):
@@ -38,7 +37,7 @@ func _process(delta):
 		else:
 			btn.icon = null
 			btn.disabled = false
-			
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

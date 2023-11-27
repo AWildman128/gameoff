@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://clvl8i5bcr6vq"]
 
 [ext_resource type="Script" path="res://Player/Settings.gd" id="1_2mbfg"]
-[ext_resource type="FontFile" uid="uid://c3357d2eft5f0" path="res://Assets/Fonts/Scrambled_Eggs_Short_Lowercase.ttf" id="2_0p0al"]
+[ext_resource type="FontFile" uid="uid://c1m2dbux6b86c" path="res://Assets/Fonts/Scrambled_Eggs_Short_Lowercase.ttf" id="2_0p0al"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7mdp5"]
 font = ExtResource("2_0p0al")

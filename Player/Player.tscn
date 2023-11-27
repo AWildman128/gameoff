@@ -7,7 +7,7 @@
 [ext_resource type="FontFile" uid="uid://dyff3076rpsoq" path="res://Assets/Fonts/PixelMiddle.ttf" id="2_sru23"]
 [ext_resource type="Script" path="res://Components/SnakeJump.gd" id="3_dylfg"]
 [ext_resource type="Script" path="res://addons/camera_2d_plus/objects/camera_2d_plus/camera_2d_plus_script.gd" id="3_f5fc1"]
-[ext_resource type="PackedScene" uid="uid://dcc5tui3touk2" path="res://Player/pause_menu.tscn" id="3_scga7"]
+[ext_resource type="PackedScene" uid="uid://dhxyvp7v0rh3p" path="res://Player/pause_menu.tscn" id="3_scga7"]
 [ext_resource type="Script" path="res://Components/hurt_box.gd" id="4_cnkcu"]
 [ext_resource type="Script" path="res://Components/health_component.gd" id="5_xepyk"]
 [ext_resource type="Script" path="res://Player/Weapon.gd" id="6_fyk1l"]

@@ -54,6 +54,7 @@ script = ExtResource("1_cdwhn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lnnk8")
 animation = &"idle"
+flip_h = true
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

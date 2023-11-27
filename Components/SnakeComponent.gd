@@ -10,6 +10,8 @@ class_name SnakeComponent
 @export var taper: Curve  # Scales the body along the curve
 @export var curve: Curve  # Skews the body along the curve
 @export var magnitude: float  # How much the curve gitinfluences the skew
+@export var amplitude = 1.5
+@export var frequency = 0.008
 
 @onready var weapon: Node2D = $"../Weapon"
 
@@ -68,10 +70,17 @@ func _physics_process(delta):
 	if points.size() > segments * spacing:
 		points.remove_at(points.size()-1)
 	
+	var time = Time.get_ticks_msec()
+	# Calculate the scale factor using the sine function
+	
 	# Sets segment object positions
 	for i in range(segments):
+		var phase_offset = i * 100
+		var scale_factor = sin((time - phase_offset) * frequency) * amplitude
 		bodies[i].global_position = points[i * spacing]  # Sets global position, offset by spacing
-		bodies[i].position.x += curve.sample_baked(float(i)/float(segments)) * magnitude  # Skews segments along x axis
+		bodies[i].position.x += curve.sample_baked(float(i)/float(segments)) * magnitude # Skews segments along x axis
+		if abs(player.velocity.y) > 0:
+			bodies[i].position.x += scale_factor * clamp(i, 0, 1)
 		line.set_point_position(i,bodies[i].global_position)
 		outline.set_point_position(i,bodies[i].global_position)
 	
