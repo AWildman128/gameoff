@@ -22,6 +22,7 @@ var outline = Line2D.new()
 
 var gradient = Gradient.new()
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	gradient.add_point(0, Color(Color.RED))

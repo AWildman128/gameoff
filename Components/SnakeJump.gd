@@ -77,11 +77,15 @@ func on_area_entered(area):
 func jump():
 	var direction: Vector2
 	if InputManager.input_type == InputManager.CONTROLLER:
-		direction = Vector2(Input.get_joy_axis(0,JOY_AXIS_LEFT_X), Input.get_joy_axis(0,JOY_AXIS_LEFT_Y))
+		direction = Vector2(Input.get_joy_axis(0,JOY_AXIS_LEFT_X), Input.get_joy_axis(0,JOY_AXIS_LEFT_Y)).normalized()
+		print(direction)
+		#direction = offsetDirectionUpwards(direction, 0.01).normalized()
 	elif InputManager.input_type == InputManager.KBM:
-		direction = player.global_position.direction_to(player.get_global_mouse_position())
-		
-	direction = direction.normalized()
+		direction = player.global_position.direction_to(player.get_global_mouse_position()).normalized()
+		direction = offsetDirectionUpwards(direction).normalized()
+	
+	print(direction)
+	
 	if player.is_on_wall():
 		sound_component.play("Jump")
 	else:
@@ -114,6 +118,13 @@ func is_just_landed():
 	elif not player.is_on_floor():
 		just_landed = false
 		return false
+
+
+func offsetDirectionUpwards(original_vector: Vector2, offset_amount: float = 0.25) -> Vector2:
+	# Offset the Y component of the original vector
+	var offset_vector = original_vector + Vector2(0, -offset_amount)
+	
+	return offset_vector.normalized()  # Normalize the vector to maintain its length
 
 
 

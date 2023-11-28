@@ -40,7 +40,7 @@ func _process(delta):
 	
 	var direction: Vector2
 	if InputManager.input_type == InputManager.CONTROLLER:
-		direction = Vector2(Input.get_joy_axis(0,JOY_AXIS_LEFT_X), Input.get_joy_axis(0,JOY_AXIS_LEFT_Y))
+		direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 	elif InputManager.input_type == InputManager.KBM:
 		direction = player.global_position.direction_to(player.get_global_mouse_position())
 	direction = direction.normalized()
@@ -67,7 +67,7 @@ func _process(delta):
 func shoot():
 	var direction: Vector2
 	if InputManager.input_type == InputManager.CONTROLLER:
-		direction += Vector2(Input.get_joy_axis(0,JOY_AXIS_LEFT_X), Input.get_joy_axis(0,JOY_AXIS_LEFT_Y))
+		direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 	elif InputManager.input_type == InputManager.KBM:
 		direction = get_global_mouse_position() - self.global_position
 	direction = -direction.normalized()
@@ -110,6 +110,8 @@ func spread_vector(vector: Vector2, spread: float):
 
 func set_data(new_data = null):
 	data = new_data
+	
+	sound_component.play("Equip")
 	
 	if new_data:
 		if sprite:

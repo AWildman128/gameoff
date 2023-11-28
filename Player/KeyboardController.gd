@@ -3,11 +3,12 @@ class_name KeyboardController
 
 @export var player: CharacterBody2D
 @export var speed: int = 1
-@export var amplitude = 100
+@export var amplitude = 110
 @export var frequency = 0.008
 
 @onready var tween: Tween = self.get_tree().create_tween()
 
+var time = 0
 
 func _ready():
 	if not player: player = CharacterBody2D.new()
@@ -22,7 +23,10 @@ func _physics_process(delta):
 
 	direction = direction.normalized()
 	
-	if abs(direction.x) >= 0.5 and player.is_on_floor_only():
+	
+	
+	if abs(direction.x) >= 0.5 and player.is_on_floor():
+		player.velocity.x = speed
 		# Update the time variable based on delta time
 		var time = Time.get_ticks_msec()
 		# Calculate the scale factor using the sine function
