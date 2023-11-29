@@ -7,6 +7,7 @@ class_name EnemyMelee
 @export var detection_distance = 50
 @export var animation_player: AnimationPlayer
 @export var attack_area: Area2D
+@export var sprite: Sprite2D
 
 var player: Node2D
 
@@ -24,8 +25,11 @@ func enter():
 func physics_update(delta):
 	var direction = player.global_position - enemy.global_position
 	
-	if direction.length() > 12 and not animation_player.is_playing():
+	
+	if direction.length() > 12 and not animation_player.current_animation == "Attack":
 		enemy.velocity.x = round(direction.normalized().x) * move_speed
+		animation_player.play("Run")
+		sprite.flip_h = not clamp(enemy.velocity.x, 0, 1)
 	else:
 		enemy.velocity.x = 0
 		animation_player.play("Attack")

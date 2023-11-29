@@ -20,3 +20,13 @@ func change_scene(target):
 	transition.play("EnterLevel")
 	sound_component.play("Open")
 	sound_component.play("Ding", false)
+
+
+func reload_scene():
+	transition.play("ExitLevel")
+	sound_component.play("Close")
+	await transition.animation_finished
+	get_tree().reload_current_scene()
+	transition.play("EnterLevel")
+	sound_component.play("Open")
+	sound_component.play("Ding", false)

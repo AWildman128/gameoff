@@ -6,6 +6,7 @@ class_name EnemyWander
 @export var detection_distance = 50
 @export var attack_state: State
 @export var animation_player: AnimationPlayer
+@export var sprite: Sprite2D
 
 var move_direction: Vector2
 var wander_time: float
@@ -32,6 +33,7 @@ func update(delta):
 		randomize_wander()
 	if player:
 		var direction = player.global_position - enemy.global_position
+		sprite.flip_h = not clamp(round(direction.x), 0, 1)
 		if direction.length() <= detection_distance:
 			#print(direction.length())
 			if attack_state:

@@ -10,7 +10,7 @@ const aimSpeed = 10
 @onready var bullet = preload("res://Entities/Bullet.tscn")
 @onready var rpm_timer = $RPMTimer
 @onready var sprite = $Sprite2D2
-
+@onready var empty = preload("res://Resources/Empty.tres")
 
 var shots = 3
 var shot_time = .5
@@ -23,14 +23,14 @@ signal finished_shooting
 
 func shoot(t = null):
 	if not t: target = null; return
-	if not data: return
+	if data.rpm == 0: return
 	
 	timer.start()
 	target = t
 
 
 func _process(delta):
-	if not data: self.hide(); $Area2D.monitoring=false; return
+	if data.rpm == 0: self.hide(); $Area2D.monitoring=false; return
 	
 	sprite.texture = data.texture
 	
@@ -48,7 +48,7 @@ func _process(delta):
 
 
 func _on_timer_timeout():
-	if not data: return
+	if data.rpm == 0: return
 	line.visible = false
 	for i in range(data.burst):
 		fire()

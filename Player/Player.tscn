@@ -116,8 +116,8 @@ collision_mask = 260
 shape = SubResource("RectangleShape2D_ooaxb")
 
 [node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("entity", "health_component") groups=["Player"]]
-collision_layer = 0
-collision_mask = 4
+collision_layer = 2
+collision_mask = 12
 script = ExtResource("4_cnkcu")
 entity = NodePath("..")
 health_component = NodePath("../HealthComponent")
@@ -205,7 +205,7 @@ script = ExtResource("13_d3f65")
 player = NodePath("..")
 frequency = 0.006
 
-[node name="SoundComponent" type="Node" parent="."]
+[node name="SoundComponent" type="Node2D" parent="."]
 script = ExtResource("15_4p3kb")
 sounds = Array[ExtResource("16_vmjwf")]([SubResource("Resource_euf0d"), SubResource("Resource_amvdk"), SubResource("Resource_sv4gk"), SubResource("Resource_ugxws")])
 

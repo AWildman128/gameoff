@@ -40,7 +40,11 @@ func _process(delta):
 	
 	var direction: Vector2
 	if InputManager.input_type == InputManager.CONTROLLER:
-		direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
+		var joy_dir = Vector2(Input.get_joy_axis(0,JOY_AXIS_LEFT_X), Input.get_joy_axis(0,JOY_AXIS_LEFT_Y))
+		print(joy_dir.length())
+		if abs(joy_dir.length()) >= 0.2:
+			direction = joy_dir.normalized()
+		else: direction = direction
 	elif InputManager.input_type == InputManager.KBM:
 		direction = player.global_position.direction_to(player.get_global_mouse_position())
 	direction = direction.normalized()
@@ -67,7 +71,10 @@ func _process(delta):
 func shoot():
 	var direction: Vector2
 	if InputManager.input_type == InputManager.CONTROLLER:
-		direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
+		var joy_dir = Vector2(Input.get_joy_axis(0,JOY_AXIS_LEFT_X), Input.get_joy_axis(0,JOY_AXIS_LEFT_Y))
+		print(joy_dir.length())
+		if abs(joy_dir.length()) >= 0.2:
+			direction = joy_dir.normalized()
 	elif InputManager.input_type == InputManager.KBM:
 		direction = get_global_mouse_position() - self.global_position
 	direction = -direction.normalized()

@@ -23,8 +23,6 @@ func _physics_process(delta):
 
 	direction = direction.normalized()
 	
-	
-	
 	if abs(direction.x) >= 0.5 and player.is_on_floor():
 		player.velocity.x = speed
 		# Update the time variable based on delta time

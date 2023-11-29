@@ -5,6 +5,7 @@ class_name EnemyRanged
 @export var wander: State
 @export var weapon: Node2D
 @export var detection_distance = 50
+@export var sprite: Sprite2D
 
 var player: CharacterBody2D
 var shooting = false
@@ -21,6 +22,7 @@ func shoot():
 	if shooting: return
 	
 	var direction = player.global_position - enemy.global_position
+	sprite.flip_h = not clamp(round(direction.x), 0, 1)
 	
 	if direction.length() > detection_distance:
 		shooting = false
