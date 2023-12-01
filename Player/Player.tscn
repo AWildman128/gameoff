@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://4syvdymc4y81" path="res://Assets/white_circle.png" id="1_vu111"]
 [ext_resource type="Texture2D" uid="uid://cn34v4xh7onaj" path="res://Assets/Enemies/rifle.png" id="2_4oxgu"]
 [ext_resource type="Script" path="res://Components/SnakeComponent.gd" id="2_5rf68"]
-[ext_resource type="FontFile" uid="uid://cbg3fsoitilu4" path="res://Assets/Fonts/PixelMiddle.ttf" id="2_sru23"]
+[ext_resource type="FontFile" uid="uid://dyff3076rpsoq" path="res://Assets/Fonts/PixelMiddle.ttf" id="2_sru23"]
 [ext_resource type="Script" path="res://Components/SnakeJump.gd" id="3_dylfg"]
 [ext_resource type="Script" path="res://addons/camera_2d_plus/objects/camera_2d_plus/camera_2d_plus_script.gd" id="3_f5fc1"]
 [ext_resource type="PackedScene" uid="uid://dhxyvp7v0rh3p" path="res://Player/pause_menu.tscn" id="3_scga7"]
@@ -15,12 +15,12 @@
 [ext_resource type="Script" path="res://Player/PauseComponent.gd" id="12_rh7a6"]
 [ext_resource type="Script" path="res://Player/KeyboardController.gd" id="13_d3f65"]
 [ext_resource type="Script" path="res://Components/SoundComponent.gd" id="15_4p3kb"]
-[ext_resource type="AudioStream" uid="uid://dybbndcwh1fo" path="res://Assets/Sounds/jump.wav" id="15_hog35"]
+[ext_resource type="AudioStream" uid="uid://bde1v0ibrilby" path="res://Assets/Sounds/jump.wav" id="15_hog35"]
 [ext_resource type="Script" path="res://Components/SoundData.gd" id="16_vmjwf"]
-[ext_resource type="AudioStream" uid="uid://lbnk2cpm2ulm" path="res://Assets/Sounds/land.wav" id="18_snmpr"]
-[ext_resource type="AudioStream" uid="uid://df8si6lhueb3g" path="res://Assets/Sounds/gunshot.wav" id="19_csqxn"]
-[ext_resource type="AudioStream" uid="uid://58m4aogcrqqd" path="res://Assets/Sounds/gun cocking 4.wav" id="20_1r0fy"]
-[ext_resource type="AudioStream" uid="uid://b7g30rgn0h6fo" path="res://Assets/Sounds/snake_death.wav" id="21_ei0pc"]
+[ext_resource type="AudioStream" uid="uid://dy3rblp0p4eqa" path="res://Assets/Sounds/land.wav" id="18_snmpr"]
+[ext_resource type="AudioStream" uid="uid://frm84bflw2ab" path="res://Assets/Sounds/gunshot.wav" id="19_csqxn"]
+[ext_resource type="AudioStream" uid="uid://bc6fdlob4xytt" path="res://Assets/Sounds/gun cocking 4.wav" id="20_1r0fy"]
+[ext_resource type="AudioStream" uid="uid://cqmt2xb1r7m63" path="res://Assets/Sounds/snake_death.wav" id="21_ei0pc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dffg6"]
 size = Vector2(4, 4)
@@ -35,10 +35,11 @@ size = Vector2(4, 4)
 _data = [Vector2(0, 0.968421), 0.0, 0.0, 0, 0, Vector2(0.151351, 0.621053), 0.0, 0.0, 0, 0, Vector2(1, 0.252632), -1.48366, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="Curve" id="Curve_epavr"]
+[sub_resource type="Curve" id="Curve_l460v"]
 min_value = -1.0
-_data = [Vector2(0, 0.0105878), 0.0, 0.0, 0, 0, Vector2(0.317137, 0.137642), 0.0, 0.0, 0, 0, Vector2(0.647008, -0.116466), 0.0, 0.0, 0, 0, Vector2(1, 0.0211756), 0.0, 0.0, 0, 0]
-point_count = 4
+bake_resolution = 10
+_data = [Vector2(0, 0.0105263), 0.0, 0.0, 0, 0, Vector2(0.324324, 0.305263), 0.0, 0.0, 0, 0, Vector2(0.486486, -0.242105), 1.05482, 1.05482, 0, 0, Vector2(0.67027, 0.178947), 0.0, 0.0, 0, 0, Vector2(1, 0.0315789), 0.0, 0.0, 0, 0]
+point_count = 5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6w2mq"]
 shader = ExtResource("9_a6auy")
@@ -137,7 +138,7 @@ texture = ExtResource("1_vu111")
 segments = 10
 spacing = 1.2
 taper = SubResource("Curve_bxp8h")
-curve = SubResource("Curve_epavr")
+curve = SubResource("Curve_l460v")
 magnitude = 10.0
 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("entity", "sound_component")]

@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="SaveData" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="SaveData" load_steps=2 format=3 uid="uid://dus7xsk7m1bqu"]
 
 [ext_resource type="Script" path="res://Globals/save_data.gd" id="1_cbvdt"]
 
 [resource]
 script = ExtResource("1_cbvdt")
-floors = Array[bool]([true, true, false, false, false, false, false, false, false, false, false, false])
+floors = Array[bool]([true, false, false, false, false, false, false, false, false, false, false, false])
 fullscreen = false
 master = 0.0
-music = -7.9588
-sound = -0.445528
+music = 0.0
+sound = 0.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ddtfx4j3okrh8"]
+[gd_scene load_steps=25 format=3 uid="uid://ddtfx4j3okrh8"]
 
 [ext_resource type="Texture2D" uid="uid://dei7wjoii5tqa" path="res://Assets/Enemies/guy.png" id="1_4dxq2"]
 [ext_resource type="Script" path="res://Components/StatesMachine.gd" id="2_03bom"]
@@ -10,6 +10,9 @@
 [ext_resource type="Script" path="res://Components/GrabbedState.gd" id="5_1rpbw"]
 [ext_resource type="Script" path="res://Components/GrabbedChecker.gd" id="5_ki1i5"]
 [ext_resource type="Script" path="res://Enemies/AnimationPlayer.gd" id="10_lrfjm"]
+[ext_resource type="Script" path="res://Components/SoundComponent.gd" id="11_hrbpe"]
+[ext_resource type="Script" path="res://Components/SoundData.gd" id="12_e2jgh"]
+[ext_resource type="AudioStream" uid="uid://dp8qfcj44bl4y" path="res://Assets/Sounds/enemy_death.wav" id="13_vbpyo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5t02u"]
 radius = 6.0
@@ -151,6 +154,11 @@ _data = {
 "Run": SubResource("Animation_7ifpt")
 }
 
+[sub_resource type="Resource" id="Resource_jfvp0"]
+script = ExtResource("12_e2jgh")
+name = "Death"
+sound = ExtResource("13_vbpyo")
+
 [node name="MeleeBear" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 17
@@ -186,11 +194,12 @@ position = Vector2(7, 0)
 shape = SubResource("RectangleShape2D_bmq0c")
 disabled = true
 
-[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("entity", "hurt_box", "collision")]
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("entity", "hurt_box", "collision", "sound_component")]
 script = ExtResource("3_dlrl0")
 entity = NodePath("..")
 hurt_box = NodePath("../Sprite2D/Head/HurtboxComponent")
 collision = NodePath("../CollisionShape2D")
+sound_component = NodePath("../SoundComponent")
 
 [node name="GravityComponent" type="Node" parent="." node_paths=PackedStringArray("entity")]
 script = ExtResource("4_crm08")
@@ -236,3 +245,7 @@ script = ExtResource("10_lrfjm")
 enemy = NodePath("..")
 sprite = NodePath("../Sprite2D")
 health_component = NodePath("../HealthComponent")
+
+[node name="SoundComponent" type="Node" parent="."]
+script = ExtResource("11_hrbpe")
+sounds = Array[ExtResource("12_e2jgh")]([SubResource("Resource_jfvp0")])

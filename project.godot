@@ -10,10 +10,17 @@ config_version=5
 
 [application]
 
-config/name="Climbing Game"
+config/name="Boaba Yaga"
 run/main_scene="res://Worlds/main_menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+run/max_fps=60
+run/low_processor_mode=true
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://Assets/splashscreen.png"
+boot_splash/use_filter=false
+config/icon="res://Assets/icon.png"
+config/windows_native_icon="res://Assets/icon.ico"
+boot_splash/minimum_display_time=2000
 
 [autoload]
 
@@ -148,6 +155,10 @@ fullscreen={
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="Entities"
 2d_physics/layer_5="Projectiles"
+
+[physics]
+
+2d/run_on_separate_thread=true
 
 [rendering]
 

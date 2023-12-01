@@ -28,6 +28,7 @@ func set_health(amount):
 			if not entity.is_in_group("Player"):
 				entity.velocity.y = -100
 				dead.emit()
+				sound_component.play("Death")
 				if weapon: weapon.data = weapon.empty
 				entity.remove_child(collision)
 				hurt_box.monitorable = false

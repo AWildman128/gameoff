@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://do7w4keh2heg5"]
 
-[ext_resource type="Theme" uid="uid://h5x3p0ydjmln" path="res://Assets/ui_theme.tres" id="1_odw4p"]
-[ext_resource type="Texture2D" uid="uid://kjiioycv31bc" path="res://Assets/IMG_2711.png" id="2_30a6f"]
-[ext_resource type="Script" path="res://Worlds/main_menu.gd" id="2_p1lfi"]
+[ext_resource type="Script" path="res://Worlds/main_menu.gd" id="1_ek36x"]
+[ext_resource type="Theme" uid="uid://h5x3p0ydjmln" path="res://Assets/ui_theme.tres" id="1_haw5q"]
+[ext_resource type="PackedScene" uid="uid://3ga4bk3l6ppa" path="res://Worlds/level_select.tscn" id="2_ud7ll"]
 [ext_resource type="PackedScene" uid="uid://clvl8i5bcr6vq" path="res://UI/settings.tscn" id="3_i7btx"]
-[ext_resource type="PackedScene" uid="uid://3ga4bk3l6ppa" path="res://Worlds/level_select.tscn" id="3_vv17w"]
+[ext_resource type="Texture2D" uid="uid://d4fbhyoc4de57" path="res://Assets/main_image.jpg" id="4_p6t8k"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -13,9 +13,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_odw4p")
-script = ExtResource("2_p1lfi")
-world = ExtResource("3_vv17w")
+theme = ExtResource("1_haw5q")
+script = ExtResource("1_ek36x")
+world = ExtResource("2_ud7ll")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
@@ -35,11 +35,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 48.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_30a6f")
-expand_mode = 3
+texture = ExtResource("4_p6t8k")
+expand_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/Menu"]
 layout_mode = 1
