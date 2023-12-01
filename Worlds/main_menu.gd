@@ -11,7 +11,7 @@ func _ready():
 
 
 func _on_start_pressed():
-	LevelManager.change_scene(preload("res://Worlds/level_select.tscn"))
+	LevelManager.change_scene(load("res://Worlds/level_select.tscn"))
 
 
 func _on_settings_pressed():

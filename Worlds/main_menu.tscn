@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://do7w4keh2heg5"]
 
 [ext_resource type="Theme" uid="uid://h5x3p0ydjmln" path="res://Assets/ui_theme.tres" id="1_odw4p"]
-[ext_resource type="Texture2D" uid="uid://c23aix8pu5361" path="res://Assets/IMG_2711.png" id="2_30a6f"]
+[ext_resource type="Texture2D" uid="uid://kjiioycv31bc" path="res://Assets/IMG_2711.png" id="2_30a6f"]
 [ext_resource type="Script" path="res://Worlds/main_menu.gd" id="2_p1lfi"]
 [ext_resource type="PackedScene" uid="uid://clvl8i5bcr6vq" path="res://UI/settings.tscn" id="3_i7btx"]
 [ext_resource type="PackedScene" uid="uid://3ga4bk3l6ppa" path="res://Worlds/level_select.tscn" id="3_vv17w"]
