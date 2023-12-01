@@ -1,11 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://3ga4bk3l6ppa"]
+[gd_scene load_steps=20 format=3 uid="uid://3ga4bk3l6ppa"]
 
 [ext_resource type="Script" path="res://UI/floor_select.gd" id="1_3ofxv"]
 [ext_resource type="Texture2D" uid="uid://kegb8qa5poo6" path="res://Assets/level_select_background.png" id="1_723nh"]
 [ext_resource type="Theme" uid="uid://h5x3p0ydjmln" path="res://Assets/ui_theme.tres" id="1_kywr1"]
 [ext_resource type="Script" path="res://Worlds/level_select.gd" id="1_m7vk5"]
 [ext_resource type="FontFile" uid="uid://ck8qjk58xhs3r" path="res://Assets/Fonts/Whacky_Joe_Monospaced.ttf" id="2_6i0tn"]
-[ext_resource type="Texture2D" uid="uid://l64utxtsrkef" path="res://Assets/lock.png" id="4_jgch0"]
 [ext_resource type="PackedScene" uid="uid://0434gef1k40g" path="res://Worlds/floor_10.tscn" id="5_ndy0c"]
 [ext_resource type="PackedScene" uid="uid://b4j637y60hnu2" path="res://Worlds/floor_1.tscn" id="5_rsedw"]
 [ext_resource type="PackedScene" uid="uid://bpu5ctuqwjsxm" path="res://Worlds/floor_9.tscn" id="6_2xs4j"]
@@ -36,9 +35,9 @@ script = ExtResource("1_m7vk5")
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 20.6315
+offset_top = 20.5052
 offset_right = 102.0
-offset_bottom = 70.6407
+offset_bottom = 70.5164
 text = "Level
 Select"
 label_settings = SubResource("LabelSettings_vf3rg")
@@ -70,36 +69,28 @@ theme = ExtResource("1_kywr1")
 [node name="Peak Pinnacle" type="Button" parent="ScrollContainer/MarginContainer/Levels"]
 layout_mode = 2
 theme = ExtResource("1_kywr1")
-disabled = true
 text = "Peak Pinnacle"
-icon = ExtResource("4_jgch0")
 script = ExtResource("1_3ofxv")
 world = ExtResource("6_f1fhd")
 
 [node name="Floor 10" type="Button" parent="ScrollContainer/MarginContainer/Levels"]
 layout_mode = 2
 theme = ExtResource("1_kywr1")
-disabled = true
 text = "Floor 10"
-icon = ExtResource("4_jgch0")
 script = ExtResource("1_3ofxv")
 world = ExtResource("5_ndy0c")
 
 [node name="Floor 9" type="Button" parent="ScrollContainer/MarginContainer/Levels"]
 layout_mode = 2
 theme = ExtResource("1_kywr1")
-disabled = true
 text = "Floor 9"
-icon = ExtResource("4_jgch0")
 script = ExtResource("1_3ofxv")
 world = ExtResource("6_2xs4j")
 
 [node name="Floor 8" type="Button" parent="ScrollContainer/MarginContainer/Levels"]
 layout_mode = 2
 theme = ExtResource("1_kywr1")
-disabled = true
 text = "Floor 8"
-icon = ExtResource("4_jgch0")
 script = ExtResource("1_3ofxv")
 world = ExtResource("7_ranuj")
 
@@ -174,7 +165,7 @@ texture = ExtResource("1_723nh")
 stretch_mode = 1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_offset = Vector2(237476, 237476)
+motion_offset = Vector2(242701, 242701)
 motion_mirroring = Vector2(384, 224)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]

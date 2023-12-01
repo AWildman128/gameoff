@@ -5,9 +5,7 @@ extends Control
 
 func _ready():
 	$TabContainer/Menu/MarginContainer/VBoxContainer/Start.grab_focus()
-
-
-
+	MusicManager.play_song(MusicManager.GAME)
 
 func _on_start_pressed():
 	LevelManager.change_scene(world)

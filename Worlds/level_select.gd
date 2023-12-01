@@ -17,8 +17,6 @@ func _ready():
 	tween.tween_property(label, "position", Vector2(24,16+5), 1).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(label, "position", Vector2(24,16-5), 1).set_trans(Tween.TRANS_SINE)
 	tween.set_loops()
-	
-	MusicManager.play_song(MusicManager.GAME)
 
 	$ScrollContainer/MarginContainer/Levels/Courtyard.grab_focus()
 	$ScrollContainer.scroll_vertical = 200

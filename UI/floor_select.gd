@@ -17,6 +17,7 @@ func pressed():
 	print("Entering Level")
 	print(world)
 	LevelManager.change_scene(world)
+	MusicManager.play_song(MusicManager.GAME)
 
 
 func set_world(w: PackedScene):

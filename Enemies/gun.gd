@@ -30,7 +30,7 @@ func shoot(t = null):
 
 
 func _process(delta):
-	if data.rpm == 0: self.hide(); $Area2D.monitoring=false; return
+	if data.ammo == 0: self.hide(); $Area2D.monitoring=false; return
 	
 	sprite.texture = data.texture
 	
@@ -48,7 +48,7 @@ func _process(delta):
 
 
 func _on_timer_timeout():
-	if data.rpm == 0: return
+	if data.ammo == 0: return
 	line.visible = false
 	for i in range(data.burst):
 		fire()

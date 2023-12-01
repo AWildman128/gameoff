@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Gun" load_steps=3 format=3 uid="uid://tb5ur7eb7oyt"]
+
+[ext_resource type="Script" path="res://Resources/gun.gd" id="1_03oeb"]
+[ext_resource type="Texture2D" uid="uid://deildshw1djxr" path="res://Assets/egg.png" id="2_7ehpw"]
+
+[resource]
+script = ExtResource("1_03oeb")
+texture = ExtResource("2_7ehpw")
+full_auto = false
+bullets = 0
+rpm = 0.0
+spread = 0.0
+recoil = 0.0
+life_time = 0.0
+ammo = 1
+burst = 0

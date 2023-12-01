@@ -8,6 +8,7 @@ class_name HealthComponent
 @export var weapon: Node2D
 @export var hurt_box: HurtboxComponent
 @export var collision: CollisionShape2D
+@export var sound_component: SoundComponent
 
 signal dead
 
@@ -29,13 +30,16 @@ func set_health(amount):
 				dead.emit()
 				if weapon: weapon.data = weapon.empty
 				entity.remove_child(collision)
-				entity.remove_child(hurt_box)
+				hurt_box.monitorable = false
+				hurt_box.monitoring = false
+				hurt_box.queue_free()
 				
 			else:
-				await get_tree().create_timer(0.2).timeout
+				sound_component.play("Death", true, -5)
 				death_effect.one_shot = true
 				death_effect.emitting = true
 				entity.add_child(death_effect)
+				await get_tree().create_timer(0.2).timeout
 				LevelManager.reload_scene()
 
 

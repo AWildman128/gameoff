@@ -12,7 +12,7 @@ extends Node2D
 @onready var texture_rect = $"../UI/TextureRect"
 @onready var label = $"../UI/TextureRect/Label"
 @onready var camera: Camera2DPlus = $"../Camera2D"
-@onready var sound_component = $"../SoundComponent"
+@onready var sound_component: SoundComponent = $"../SoundComponent"
 
 @onready var tween = get_tree().create_tween()
 
@@ -69,6 +69,8 @@ func _process(delta):
 
 
 func shoot():
+	if data.rpm == 0: return
+	
 	var direction: Vector2
 	if InputManager.input_type == InputManager.CONTROLLER:
 		var joy_dir = Vector2(Input.get_joy_axis(0,JOY_AXIS_LEFT_X), Input.get_joy_axis(0,JOY_AXIS_LEFT_Y))

@@ -33,7 +33,11 @@ func update(delta):
 		randomize_wander()
 	if player:
 		var direction = player.global_position - enemy.global_position
-		sprite.flip_h = not clamp(round(direction.x), 0, 1)
+		sprite.flip_h = not clamp(round(enemy.velocity.x), 0, 1)
+		if abs(enemy.velocity.x) > 0:
+			animation_player.play("Run")
+		else:
+			animation_player.play("Idle")
 		if direction.length() <= detection_distance:
 			#print(direction.length())
 			if attack_state:

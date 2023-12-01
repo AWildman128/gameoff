@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ces8lc5s2ityk"]
+[gd_scene load_steps=22 format=3 uid="uid://ces8lc5s2ityk"]
 
 [ext_resource type="Texture2D" uid="uid://dei7wjoii5tqa" path="res://Assets/Enemies/guy.png" id="1_0twps"]
 [ext_resource type="Script" path="res://Components/hurt_box.gd" id="2_oxq7h"]
@@ -7,8 +7,10 @@
 [ext_resource type="Script" path="res://Components/StatesMachine.gd" id="5_reu1e"]
 [ext_resource type="Script" path="res://Components/EnemyRanged.gd" id="6_cgcie"]
 [ext_resource type="Script" path="res://Components/Wander.gd" id="7_peonx"]
+[ext_resource type="Script" path="res://Components/GrabbedChecker.gd" id="7_x5ycd"]
 [ext_resource type="PackedScene" uid="uid://8bfvo250dwwt" path="res://Enemies/gun.tscn" id="8_2vkwo"]
 [ext_resource type="Resource" uid="uid://ccyqvuqo5fllx" path="res://Resources/Rifle.tres" id="9_1a13m"]
+[ext_resource type="Script" path="res://Components/GrabbedState.gd" id="9_enhjn"]
 [ext_resource type="Script" path="res://Enemies/AnimationPlayer.gd" id="10_i6kaq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wjeo0"]
@@ -47,6 +49,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [16, 17, 18, 19, 20, 21, 22]
+}
+
+[sub_resource type="Animation" id="Animation_8dctt"]
+resource_name = "Grabbed"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [31, 32]
 }
 
 [sub_resource type="Animation" id="Animation_o2wwy"]
@@ -102,6 +121,7 @@ tracks/0/keys = {
 _data = {
 "Attack": SubResource("Animation_iim1l"),
 "Death": SubResource("Animation_36jpq"),
+"Grabbed": SubResource("Animation_8dctt"),
 "Idle": SubResource("Animation_o2wwy"),
 "RESET": SubResource("Animation_kbkbc"),
 "Run": SubResource("Animation_7ifpt")
@@ -113,7 +133,7 @@ collision_mask = 17
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_0twps")
-hframes = 31
+hframes = 33
 
 [node name="Head" type="Node2D" parent="Sprite2D"]
 position = Vector2(1, -4)
@@ -129,7 +149,7 @@ health_component = NodePath("../../../HealthComponent")
 shape = SubResource("CircleShape2D_wjeo0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 5.5)
+position = Vector2(-1, 4.5)
 shape = SubResource("RectangleShape2D_8djfc")
 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("entity", "weapon", "hurt_box", "collision")]
@@ -155,6 +175,10 @@ weapon = NodePath("../../Gun")
 detection_distance = 200
 sprite = NodePath("../../Sprite2D")
 
+[node name="GrabbedChecker" type="Node" parent="StateMachine/EnemyRanged" node_paths=PackedStringArray("area")]
+script = ExtResource("7_x5ycd")
+area = NodePath("../../../Sprite2D/Head/HurtboxComponent")
+
 [node name="EnemyWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "attack_state", "animation_player", "sprite")]
 script = ExtResource("7_peonx")
 enemy = NodePath("../..")
@@ -162,6 +186,12 @@ detection_distance = 200
 attack_state = NodePath("../EnemyRanged")
 animation_player = NodePath("../../AnimationPlayer")
 sprite = NodePath("../../Sprite2D")
+
+[node name="GrabbedState" type="Node" parent="StateMachine" node_paths=PackedStringArray("entity", "sprite", "animation_player")]
+script = ExtResource("9_enhjn")
+entity = NodePath("../..")
+sprite = NodePath("../../Sprite2D")
+animation_player = NodePath("../../AnimationPlayer")
 
 [node name="Gun" parent="." node_paths=PackedStringArray("hurt_box") instance=ExtResource("8_2vkwo")]
 data = ExtResource("9_1a13m")

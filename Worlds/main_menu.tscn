@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://do7w4keh2heg5"]
+[gd_scene load_steps=6 format=3 uid="uid://do7w4keh2heg5"]
 
 [ext_resource type="Script" path="res://Worlds/main_menu.gd" id="1_ek36x"]
 [ext_resource type="Theme" uid="uid://h5x3p0ydjmln" path="res://Assets/ui_theme.tres" id="1_haw5q"]
 [ext_resource type="PackedScene" uid="uid://3ga4bk3l6ppa" path="res://Worlds/level_select.tscn" id="2_ud7ll"]
 [ext_resource type="PackedScene" uid="uid://clvl8i5bcr6vq" path="res://UI/settings.tscn" id="3_i7btx"]
+[ext_resource type="Texture2D" uid="uid://dvaf0eiw60r02" path="res://Assets/IMG_2711.png" id="4_klk3q"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -17,27 +18,42 @@ script = ExtResource("1_ek36x")
 world = ExtResource("2_ud7ll")
 
 [node name="TabContainer" type="TabContainer" parent="."]
-layout_mode = 0
-offset_right = 384.0
-offset_bottom = 216.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 clip_tabs = false
 tabs_visible = false
 
 [node name="Menu" type="Control" parent="TabContainer"]
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_klk3q")
+expand_mode = 2
+
 [node name="Label" type="Label" parent="TabContainer/Menu"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -17.0
-offset_top = 39.0
-offset_right = 17.0
-offset_bottom = 65.0
+offset_left = -177.0
+offset_top = 31.0
+offset_right = -86.0
+offset_bottom = 81.0
 grow_horizontal = 2
-text = "Boaba Yaga
+text = "Boaba
+Yaga
 "
+horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Menu"]
 layout_mode = 1
@@ -46,9 +62,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -37.0
+offset_left = 75.0
 offset_top = -14.0
-offset_right = 37.0
+offset_right = 149.0
 offset_bottom = 87.0
 grow_horizontal = 2
 grow_vertical = 2

@@ -12,4 +12,5 @@ func enter():
 
 func on_area_entered(area):
 	print('area entered')
-	get_parent().transition.emit(self.get_parent(), "grabbedstate")
+	if area.is_in_group("Player"):
+		get_parent().transition.emit(self.get_parent(), "grabbedstate")
