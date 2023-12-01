@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dd4407yxpywol"]
+[gd_scene load_steps=12 format=3 uid="uid://dp5y5lqawyohk"]
 
 [ext_resource type="TileSet" uid="uid://dk01xxg1m6gp7" path="res://LevelEditor/level_editor.tres" id="1_1x7nq"]
 [ext_resource type="Script" path="res://LevelEditor/LevelEditor.gd" id="2_r226l"]
@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://LevelEditor/object_data.gd" id="4_ecmx0"]
 [ext_resource type="PackedScene" uid="uid://ces8lc5s2ityk" path="res://Enemies/ranged_enemy.tscn" id="5_8kudt"]
 [ext_resource type="Script" path="res://Worlds/SceneChange.gd" id="7_14k37"]
-[ext_resource type="PackedScene" uid="uid://cfagvvivt5u72" path="res://Worlds/floor_8.tscn" id="8_qqmu7"]
+[ext_resource type="PackedScene" uid="uid://bkmfnfvwq4m61" path="res://Worlds/floor_8.tscn" id="8_qqmu7"]
 
 [sub_resource type="Resource" id="Resource_rxp05"]
 script = ExtResource("4_ecmx0")

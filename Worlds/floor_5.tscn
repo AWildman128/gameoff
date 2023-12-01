@@ -4,12 +4,12 @@
 [ext_resource type="Script" path="res://LevelEditor/LevelEditor.gd" id="2_ej4xl"]
 [ext_resource type="PackedScene" uid="uid://clddbg7onlucs" path="res://Player/Player.tscn" id="3_71h1j"]
 [ext_resource type="PackedScene" uid="uid://ces8lc5s2ityk" path="res://Enemies/ranged_enemy.tscn" id="3_fnlyv"]
-[ext_resource type="PackedScene" uid="uid://bptq07qw4byd2" path="res://Resources/weapon_kiosk.tscn" id="4_gnrnh"]
+[ext_resource type="PackedScene" path="res://Resources/weapon_kiosk.tscn" id="4_gnrnh"]
 [ext_resource type="Script" path="res://LevelEditor/object_data.gd" id="4_qkq31"]
 [ext_resource type="PackedScene" uid="uid://ddtfx4j3okrh8" path="res://Enemies/MeleeBear.tscn" id="5_vxipu"]
 [ext_resource type="Resource" uid="uid://cl71fw3ji1a22" path="res://Resources/Shotgun.tres" id="6_6xlr5"]
 [ext_resource type="Script" path="res://Worlds/SceneChange.gd" id="8_gygbu"]
-[ext_resource type="PackedScene" uid="uid://dct0pj5p4egga" path="res://Worlds/floor_6.tscn" id="9_0icts"]
+[ext_resource type="PackedScene" uid="uid://blvdfcumfrf" path="res://Worlds/floor_6.tscn" id="9_0icts"]
 
 [sub_resource type="Resource" id="Resource_gpvt4"]
 script = ExtResource("4_qkq31")

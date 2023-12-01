@@ -7,6 +7,7 @@ enum {
 	MAIN_MENU,
 	LEVEL_SELECT,
 	GAME,
+	CREDITS,
 	TEST
 }
 
@@ -18,7 +19,9 @@ var Volume = {
 
 
 var songs = {
-	GAME: preload("res://Assets/Music/Snake_Attack_6e-Loop.mp3"),
+	GAME: preload("res://Assets/Music/Snake_Attack_6e-loop_2.mp3"),
+	MAIN_MENU: preload("res://Assets/Music/Main_Menu_2c.mp3"),
+	CREDITS: preload("res://Assets/Music/Snake_Den-Credits_2a.mp3"),
 	TEST: preload("res://Assets/Music/001.mp3")
 }
 
@@ -49,6 +52,7 @@ func stop():
 	var tween = music_player.create_tween()
 	tween.tween_property(music_player, "volume_db", -100, 1).set_trans(Tween.TRANS_SINE)
 	tween.tween_callback(music_player.stop)
+	tween.tween_property(music_player, "volume_db", 0, 0)
 
 
 func music_finished(song):

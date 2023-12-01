@@ -10,7 +10,7 @@ class_name SnakeComponent
 @export var taper: Curve  # Scales the body along the curve
 @export var curve: Curve  # Skews the body along the curve
 @export var magnitude: float  # How much the curve gitinfluences the skew
-@export var amplitude = 1.5
+@export var amplitude = 2
 @export var frequency = 0.008
 
 @onready var weapon: Node2D = $"../Weapon"

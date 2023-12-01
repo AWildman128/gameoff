@@ -1,18 +1,18 @@
 [gd_scene load_steps=20 format=3 uid="uid://3ga4bk3l6ppa"]
 
 [ext_resource type="Script" path="res://UI/floor_select.gd" id="1_3ofxv"]
-[ext_resource type="Texture2D" uid="uid://kegb8qa5poo6" path="res://Assets/level_select_background.png" id="1_723nh"]
+[ext_resource type="Texture2D" uid="uid://j4knkc4yol1c" path="res://Assets/level_select_background.png" id="1_723nh"]
 [ext_resource type="Theme" uid="uid://h5x3p0ydjmln" path="res://Assets/ui_theme.tres" id="1_kywr1"]
 [ext_resource type="Script" path="res://Worlds/level_select.gd" id="1_m7vk5"]
-[ext_resource type="FontFile" uid="uid://ck8qjk58xhs3r" path="res://Assets/Fonts/Whacky_Joe_Monospaced.ttf" id="2_6i0tn"]
-[ext_resource type="PackedScene" uid="uid://0434gef1k40g" path="res://Worlds/floor_10.tscn" id="5_ndy0c"]
+[ext_resource type="FontFile" uid="uid://de05t4wtvyfbt" path="res://Assets/Fonts/Whacky_Joe_Monospaced.ttf" id="2_6i0tn"]
+[ext_resource type="PackedScene" uid="uid://dr8ef8h8u5fb4" path="res://Worlds/floor_10.tscn" id="5_ndy0c"]
 [ext_resource type="PackedScene" uid="uid://b4j637y60hnu2" path="res://Worlds/floor_1.tscn" id="5_rsedw"]
-[ext_resource type="PackedScene" uid="uid://bpu5ctuqwjsxm" path="res://Worlds/floor_9.tscn" id="6_2xs4j"]
-[ext_resource type="PackedScene" uid="uid://wf53tv7ke4hg" path="res://Worlds/peak_pinnacle.tscn" id="6_f1fhd"]
+[ext_resource type="PackedScene" uid="uid://wd4y1e4g5dhh" path="res://Worlds/floor_9.tscn" id="6_2xs4j"]
+[ext_resource type="PackedScene" path="res://Worlds/peak_pinnacle.tscn" id="6_f1fhd"]
 [ext_resource type="PackedScene" uid="uid://cp2jtb447c6o6" path="res://Worlds/courtyard.tscn" id="6_q4y4d"]
-[ext_resource type="PackedScene" uid="uid://c8nal5llwb27m" path="res://Worlds/floor_8.tscn" id="7_ranuj"]
-[ext_resource type="PackedScene" uid="uid://cnuugsnvplsrs" path="res://Worlds/floor_7.tscn" id="9_p0y3l"]
-[ext_resource type="PackedScene" uid="uid://bew85o04qav10" path="res://Worlds/floor_6.tscn" id="10_r4eke"]
+[ext_resource type="PackedScene" uid="uid://bkmfnfvwq4m61" path="res://Worlds/floor_8.tscn" id="7_ranuj"]
+[ext_resource type="PackedScene" uid="uid://dp5y5lqawyohk" path="res://Worlds/floor_7.tscn" id="9_p0y3l"]
+[ext_resource type="PackedScene" uid="uid://blvdfcumfrf" path="res://Worlds/floor_6.tscn" id="10_r4eke"]
 [ext_resource type="PackedScene" uid="uid://c0ca0nuqniajd" path="res://Worlds/floor_5.tscn" id="11_qc51t"]
 [ext_resource type="PackedScene" uid="uid://jefwdot1yon6" path="res://Worlds/floor_4.tscn" id="12_qd2ut"]
 [ext_resource type="PackedScene" uid="uid://tbfu3odjm2wh" path="res://Worlds/floor_3.tscn" id="13_g8rod"]
@@ -35,9 +35,9 @@ script = ExtResource("1_m7vk5")
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 20.5052
+offset_top = 15.5659
 offset_right = 102.0
-offset_bottom = 70.5164
+offset_bottom = 65.5682
 text = "Level
 Select"
 label_settings = SubResource("LabelSettings_vf3rg")
@@ -50,6 +50,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 follow_focus = true
+scroll_vertical = 108
 horizontal_scroll_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
@@ -165,7 +166,7 @@ texture = ExtResource("1_723nh")
 stretch_mode = 1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_offset = Vector2(242701, 242701)
+motion_offset = Vector2(245540, 245540)
 motion_mirroring = Vector2(384, 224)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
